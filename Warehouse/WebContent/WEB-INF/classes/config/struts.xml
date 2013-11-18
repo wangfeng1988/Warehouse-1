@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	
+	<!-- 将Action的创建交给spring来管理 -->  
+    <constant name="struts.objectFactory" value="spring" /> 
+    
+	<!-- 包含的配置文件 -->
+	<include file="/config/struts-warehousing_entry.xml"></include>
+	<include file="/config/struts-materials_requisition.xml"></include>
+
+</struts>
