@@ -13,6 +13,13 @@ import com.ssh.jutem.edit.service.IMaterialsRequisitionService;
 
 public class MaterialsRequisitionAction extends ActionSupport 
 {
+	//由于点击详情会刷新搜索页面，这个时候存在BUG会使以下两项为空，所以验证防止出错（之后ajax修改)
+	public void validateSelect()
+	{
+		if(searchKey==null || searchType==null)
+			addFieldError("search_error","请填写必要信息");
+	}
+	
 	public String add()
 	{
 		System.out.println("this is material requisition action");	
@@ -26,9 +33,9 @@ public class MaterialsRequisitionAction extends ActionSupport
 	
 	public String delete()
 	{
-		System.out.println("this is material requisition delete action");
+/*		System.out.println("this is material requisition delete action");
 		if(!requisitionService.delete(requisitionBean))
-			System.out.println("spring success");
+			System.out.println("spring success");*/
 		return SUCCESS;
 	}
 	
@@ -45,6 +52,18 @@ public class MaterialsRequisitionAction extends ActionSupport
 		result=requisitionService.select(searchKey, searchType);
 		
 		System.out.println(result);
+		
+		return SUCCESS;
+	}
+	
+	public String selectDetails() throws Exception
+	{
+		System.out.println("this is select requisition");
+		System.out.println(id);
+		
+		requisition_detials=requisitionService.selectDetial(id);
+		
+		System.out.println(requisition_detials.toString());
 		
 		return SUCCESS;
 	}
@@ -94,6 +113,19 @@ public class MaterialsRequisitionAction extends ActionSupport
 	public void setResult(List<MaterialsRequisition> result) {
 		this.result = result;
 	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	public MaterialsRequisition getRequisition_detials() {
+		return requisition_detials;
+	}
+	public void setRequisition_detials(MaterialsRequisition requisition_detials) {
+		this.requisition_detials = requisition_detials;
+	}
 
 	private List<Material> materialBeans;
 	private MaterialsRequisition requisitionBean;
@@ -104,6 +136,10 @@ public class MaterialsRequisitionAction extends ActionSupport
 	private String searchType;
 	
 	private List<MaterialsRequisition> result=new ArrayList<MaterialsRequisition>();
+	
+	/*查询详情*/
+	private int id;
+	private MaterialsRequisition requisition_detials;
 	
 	@Resource
 	private IMaterialsRequisitionService requisitionService;

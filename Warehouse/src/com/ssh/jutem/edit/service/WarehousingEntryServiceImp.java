@@ -30,6 +30,8 @@ public class WarehousingEntryServiceImp implements IWarehousingEntryService
 			/*在页面中添加删除行的时候可能会导致带之前下标项被删除，导致出现空项*/
 			if(m==null)
 				continue;
+			/*初始库存等于总量*/
+			m.setStock(m.getAmount());
 			m.setEntry(entryBean);
 		}
 		
@@ -124,6 +126,13 @@ public class WarehousingEntryServiceImp implements IWarehousingEntryService
 		return result;
 	}
 
+	@Override
+	public WarehousingEntry selectDetial(int id) 
+	{	
+		System.out.println("this is selectDetial service");
+		return (WarehousingEntry) entryDao.selectById(id);
+	}
+	
 	private List<?> selectAll() 
 	{
 		if(!isCache)
@@ -140,6 +149,8 @@ public class WarehousingEntryServiceImp implements IWarehousingEntryService
 		
 		return allOfEntry;
 	}
+	
+
 	
 	/*get(),set()*/
 	public IWarehousingEntryDao getEntryDao() 
@@ -161,4 +172,5 @@ public class WarehousingEntryServiceImp implements IWarehousingEntryService
 	
 	/*验证常量*/
 	private static final String[] SEARCH_TYPES={"制单日期","单据号码","原始单号","进货仓库","供应商"};
+
 }

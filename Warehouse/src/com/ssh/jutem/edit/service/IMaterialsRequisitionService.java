@@ -12,5 +12,6 @@ public interface IMaterialsRequisitionService
 	public boolean delete(MaterialsRequisition materials_requisition);
 	public boolean modify(MaterialsRequisition materials_requisition);
 	public List<MaterialsRequisition> select(String searchKey, String searchType);
+	public MaterialsRequisition selectDetial(int id);
 
 }

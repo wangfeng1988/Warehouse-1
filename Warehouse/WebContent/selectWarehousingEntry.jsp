@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -75,6 +76,7 @@
 							<th>合计数量</th>
 							<th>合计金额</th>
 							<th>备注</th>
+							<th>详情</th>
 						</tr>
 						<s:iterator value="result" id="entry">
 						<tr>
@@ -87,6 +89,12 @@
 								<td><s:property value="#entry.total_number" /></td>
 								<td><s:property value="#entry.total_money" /></td>
 								<td><s:property value="#entry.remark" /></td>
+								<td>
+								<form>
+									<input type="submit" value="详情" onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
+								</form>
+								</td>
+								
 						</tr>
 						</s:iterator>
 					</table>

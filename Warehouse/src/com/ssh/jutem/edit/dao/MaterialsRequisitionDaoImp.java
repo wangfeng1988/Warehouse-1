@@ -62,6 +62,13 @@ public class MaterialsRequisitionDaoImp implements IMaterialsRequisitionDao
 		String queryString = "from MaterialsRequisition";	
 		return this.getSession().createQuery(queryString).list();	
 	}
+	
+	@Override
+	public Object selectById(int id) 
+	{
+		System.out.println("This is selectById");
+		return this.getSession().get(LISTNAME, id);
+	}
 
 	/*get(),set()*/
 	public void setSessionFactory(SessionFactory sessionFactory)
@@ -75,4 +82,6 @@ public class MaterialsRequisitionDaoImp implements IMaterialsRequisitionDao
 	}	
 	
 	private SessionFactory sessionFactory;
+
+	private static final String LISTNAME="com.ssh.jutem.edit.model.MaterialsRequisition";
 }

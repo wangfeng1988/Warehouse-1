@@ -113,7 +113,7 @@
 						<th>单位</th>
 						<th>入库单价</th>
 						<th>销售单价</th>
-						<th>数量</th>
+						<th>库存</th>
 						<th>金额</th>
 						<th>备注</th>
 						<th>需求数量</th>
@@ -132,7 +132,7 @@
 							<td><s:property value="#material.unit" /></td>
 							<td><s:property value="#material.warehousing_price" /></td>
 							<td><s:property value="#material.sales_price" /></td>
-							<td><s:property value="#material.amount" /></td>
+							<td><s:property value="#material.stock" /></td>
 							<td><s:property value="#material.money" /></td>
 							<td><s:property value="#material.remark" /></td>
 							<td><input type="text" /></td>

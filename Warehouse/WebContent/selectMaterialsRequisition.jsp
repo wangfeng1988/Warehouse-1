@@ -74,6 +74,7 @@
 						<th>合计数量</th>
 						<th>合计金额</th>
 						<th>备注</th>
+						<th>详情</th>
 					</tr>
 					<s:iterator value="result" id="requisition">
 						<tr>
@@ -86,6 +87,12 @@
 							<td><s:property value="#requisition.total_number" /></td>
 							<td><s:property value="#requisition.total_money" /></td>
 							<td><s:property value="#requisition.remark" /></td>
+							<td>
+								<form>
+									<input type="submit" value="详情"
+										onclick="openFormWin('transferToDetRequisition.jsp'+'?id=<s:property value="#requisition.id" />','detailsMaterialsRequisition','930','450')" />
+								</form>
+							</td>
 						</tr>
 					</s:iterator>
 				</table>

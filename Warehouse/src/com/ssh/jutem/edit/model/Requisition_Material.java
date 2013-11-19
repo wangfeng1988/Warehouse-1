@@ -12,7 +12,8 @@ import javax.persistence.ManyToOne;
 public class Requisition_Material
 {
 	private int id;
-	private int number;
+	private double number;
+	private double money; //单价×数量
 	private MaterialsRequisition requisition;
 	private Material material;
 	
@@ -24,13 +25,18 @@ public class Requisition_Material
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getNumber() {
+	public double getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(double number) {
 		this.number = number;
 	}
-	
+	public double getMoney() {
+		return money;
+	}
+	public void setMoney(double money) {
+		this.money = money;
+	}
 	@ManyToOne(fetch=FetchType.LAZY,cascade=(CascadeType.ALL))
 	@JoinColumn(name="requisition_id")
 	public MaterialsRequisition getRequisition() {
@@ -49,9 +55,9 @@ public class Requisition_Material
 		this.material = material;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "Requisition_Material [id=" + id + ", number=" + number + "]";
-	}	
+		return "Requisition_Material [id=" + id + ", number=" + number
+				+ ", money=" + money + "]";
+	}
 }

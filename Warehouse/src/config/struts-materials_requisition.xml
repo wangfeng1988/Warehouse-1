@@ -19,7 +19,13 @@
 
 		<action name="select_MaterialsRequisition" class="materialsRequisitionAction"
 			method="select">
+			<result name="input">/selectMaterialsRequisition.jsp</result>
 			<result name="success">/selectMaterialsRequisition.jsp</result>
+		</action>
+		
+		<action name="selectDetails_MaterialsRequisition" class="materialsRequisitionAction"
+			method="selectDetails">
+			<result name="success">/detailsMaterialsRequisition.jsp</result>
 		</action>
 		
 	</package>

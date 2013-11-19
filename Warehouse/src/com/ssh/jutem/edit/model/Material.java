@@ -16,15 +16,16 @@ import javax.persistence.OneToMany;
 public class Material 
 {
 	private int id;
-	private String coding;
-	private String name;
-	private String specification;
-	private String unit;
-	private double warehousing_price;
-	private double sales_price;
-	private double amount;
-	private double money;
-	private String remark;
+	private String coding;	//货品编码
+	private String name;	//货品名称
+	private String specification;	//货品规格
+	private String unit;	//单位
+	private double warehousing_price;	//入库单价
+	private double sales_price;		//销售单价
+	private double amount;	//总数
+	private double stock;	//现有库存
+	private double money;	//入库价值=总数*入库单价
+	private String remark;	//备注
 	private WarehousingEntry entry;	
 	private Set<Requisition_Material> requisition_material=new HashSet<Requisition_Material>();
 	
@@ -78,6 +79,12 @@ public class Material
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	public double getStock() {
+		return stock;
+	}
+	public void setStock(double stock) {
+		this.stock = stock;
+	}
 	public double getMoney() {
 		return money;
 	}
@@ -114,7 +121,7 @@ public class Material
 		return "Material [id=" + id + ", coding=" + coding + ", name=" + name
 				+ ", specification=" + specification + ", unit=" + unit
 				+ ", warehousing_price=" + warehousing_price + ", sales_price="
-				+ sales_price + ", amount=" + amount + ", money=" + money
-				+ ", remark=" + remark + "]";
+				+ sales_price + ", amount=" + amount + ", stock=" + stock
+				+ ", money=" + money + ", remark=" + remark + "]";
 	}
 }

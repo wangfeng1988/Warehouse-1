@@ -11,4 +11,5 @@ public interface IWarehousingEntryService
 	public boolean delete(WarehousingEntry warehousing_entry);
 	public boolean modify(WarehousingEntry warehousing_entry);
 	public List<WarehousingEntry> select(String searchKey, String searchType);
+	public WarehousingEntry selectDetial(int id);
 }

@@ -125,6 +125,13 @@ public class MaterialsRequisitionServiceImp implements IMaterialsRequisitionServ
 		return result;
 	}
 	
+	@Override
+	public MaterialsRequisition selectDetial(int id)
+	{
+		System.out.println("this is selectDetial service");
+		return (MaterialsRequisition) requisitionDao.selectById(id);
+	}
+	
 	private List<?> selectAll() 
 	{
 		if(!isCache)
@@ -160,4 +167,5 @@ public class MaterialsRequisitionServiceImp implements IMaterialsRequisitionServ
 	
 	/*验证常量*/
 	private static final String[] SEARCH_TYPES={"制单日期","单据号码","原始单号","发货仓库","领料单位"};
+
 }

@@ -11,5 +11,6 @@ public interface IMaterialsRequisitionDao
 	public boolean delete(MaterialsRequisition materials_requisition);
 	public boolean modify(MaterialsRequisition materials_requisition);
 	public List<?> selectAll();
+	public Object selectById(int id);
 
 }

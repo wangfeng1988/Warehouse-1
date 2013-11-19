@@ -10,4 +10,5 @@ public interface IWarehousingEntryDao
 	public boolean delete(WarehousingEntry warehousing_entry);
 	public boolean modify(WarehousingEntry warehousing_entry);
 	public List<?> selectAll();
+	public Object selectById(int id);
 }
