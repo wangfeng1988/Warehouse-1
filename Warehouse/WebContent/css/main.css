@@ -253,6 +253,6 @@ div#head li {
 	float: right;
 }
 
-div#search_information li,#form_information  li {
+div#search_information li,#form_information  li,div#material_information li{
 	float: left;
 }

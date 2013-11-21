@@ -23,6 +23,13 @@ public class MaterialAction extends ActionSupport
 		return SUCCESS;
 	}
 	
+	public String test()
+	{
+		System.out.println("test");
+		
+		return SUCCESS;
+	}
+	
 	/*get(),set()*/
 	public String getSearchKey() {
 		return searchKey;

@@ -1,3 +1,14 @@
+function showMaterial()
+{
+	alert("hello");
+	var xmlhttp=new XMLHttpRequest();
+
+	alert(xmlhttp.responseText);
+	
+	xmlhttp.open("POST","http://localhost:8080/Warehouse/test.action", true);
+	xmlhttp.send();
+}
+
 function showEntry(str)
 {
 	var xmlhttp;
@@ -22,7 +33,8 @@ function showEntry(str)
 		{
 			document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 		}
-	}
+	};
+	
 	xmlhttp.open("GET", "getcustomer.asp?q=" + str, true);
 	xmlhttp.send();
 }

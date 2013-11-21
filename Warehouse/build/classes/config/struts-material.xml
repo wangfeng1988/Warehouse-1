@@ -11,5 +11,10 @@
 			<result name="success">/selectMaterial.jsp</result>
 		</action>
 		
+		<action name="test" class="materialAction"
+			method="test">
+			<result name="success">/selectMatForReq.jsp</result>
+		</action>
+		
 	</package>
 </struts>

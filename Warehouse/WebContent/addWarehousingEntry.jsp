@@ -82,14 +82,14 @@
 						<s:param>material_error</s:param>
 					</s:fielderror>
 
-					<table>
-					<tr>
-						<td>
+					<ul class="ul_nav">
+						<li>
 							<input type="button" name="Submit" value="增加" onclick="javascript:AddRow();" />
+						</li>	
+						<li>
 							<input type="button" name="Submit" value="删除" onclick="javascript:DelRow();" />
-						</td>								
-					</tr>
-					</table>
+						</li>							
+					</ul>
 				</div>
 
 

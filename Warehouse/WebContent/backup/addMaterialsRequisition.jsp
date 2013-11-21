@@ -11,9 +11,6 @@
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="js/insert_material.js"></script>
 <script type="text/javascript" src="js/prepared.js"></script>
-<script type="text/javascript" src="js/open_window.js"></script>
-<script type="text/javascript" src="js/add_delete_td.js"></script>
-
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
 <title>临时页面</title>
@@ -56,32 +53,21 @@
 					</ul>
 				</div>
 
-				<div id="material_information">
+				<div class="material_information">
 					<table id="material_information" border="1">
 						<tr>
 							<th>选择</th>
 							<th>物料编码</th>
 							<th>物料名称</th>
-							<th>单位</th>
 							<th>单价</th>
 							<th>数量</th>
 							<th>金额</th>
-							<th>备注</th>
 						</tr>
 					</table>
-					
+
 					<s:fielderror>
 						<s:param>material_error</s:param>
 					</s:fielderror>
-					
-					<ul class="ul_nav">
-						<li>
-							<input type="button" value="查询" onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450')" />
-						</li>	
-						<li>
-							<input type="button" value="删除" onclick="javascript:DelRow();" />
-						</li>							
-					</ul>
 				</div>
 				
 				<div id="form_information">
@@ -98,6 +84,66 @@
 				</div>								
 				<input type="submit" value="提交" />
 			</form>
+
+			<div id="search_information">
+				<h1>搜索货品</h1>
+				<form action="select_Material" method="post">
+					<ul class="ul_nav">
+						<li>关键字:<s:textfield name="searchKey" /></li>
+						<li>搜索类型: <select name="searchType">
+								<option value="货品编码" selected="selected">货品编码</option>
+								<option value="货品名称">货品名称</option>
+						</select>
+						</li>
+						<li>
+							<input type="submit" value="搜索" />
+						</li>
+					</ul>
+				</form>
+			</div>
+
+
+			<div id="material_information">
+				<table border="1" id="search_materialInformation">
+					<tr>
+						<th>选择</th>
+						<th>货品编码</th>
+						<th>货品名称</th>
+						<th>货品规格</th>
+						<th>单位</th>
+						<th>入库单价</th>
+						<th>销售单价</th>
+						<th>库存</th>
+						<th>金额</th>
+						<th>备注</th>
+						<th>需求数量</th>
+					</tr>
+					
+					<tr>
+						<td><input type=checkbox id="box2" /></td>				
+					</tr>
+					
+					<s:iterator value="result" id="material">
+						<tr>
+							<td><input type=checkbox id="box2" /></td>
+							<td><s:property value="#material.coding" /></td>
+							<td><s:property value="#material.name" /></td>
+							<td><s:property value="#material.specification" /></td>
+							<td><s:property value="#material.unit" /></td>
+							<td><s:property value="#material.warehousing_price" /></td>
+							<td><s:property value="#material.sales_price" /></td>
+							<td><s:property value="#material.stock" /></td>
+							<td><s:property value="#material.money" /></td>
+							<td><s:property value="#material.remark" /></td>
+							<td><input type="text" /></td>
+							<td><input type="hidden" value=<s:property value="#material.id" /> /></td>
+						</tr>
+					</s:iterator>
+				</table>
+
+				<input type="button" name="Submit" value="确定"
+					onclick="insertMaterialInformation();" />
+			</div>
 		</div>
 	</div>
 
