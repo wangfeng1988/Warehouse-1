@@ -80,6 +80,18 @@ public class WarehousingEntryAction extends ActionSupport
 		return SUCCESS;
 	}
 	
+	public String toExcel() throws Exception
+	{
+		System.out.println("this is to excel");
+		System.out.println(id);
+		
+		entry_detials=entryService.selectDetial(toExcel_id);
+		
+		System.out.println(entry_detials.toString());
+		
+		return SUCCESS;
+	}
+	
 	/*get(),set()*/
 	public WarehousingEntry getEntryBean() {
 		return entryBean;
@@ -129,6 +141,13 @@ public class WarehousingEntryAction extends ActionSupport
 	public void setEntry_detials(WarehousingEntry entry_detials) {
 		this.entry_detials = entry_detials;
 	}
+	public int getToExcel_id() {
+		return toExcel_id;
+	}
+	public void setToExcel_id(int toExcel_id) {
+		this.toExcel_id = toExcel_id;
+	}
+
 
 	private WarehousingEntry entryBean;
 	private List<Material> materialBeans;
@@ -142,6 +161,9 @@ public class WarehousingEntryAction extends ActionSupport
 	/*查询详情*/
 	private int id;
 	private WarehousingEntry entry_detials;
+	
+	/*excel*/
+	private int toExcel_id;
 	
 	@Resource
 	private IWarehousingEntryService entryService; 

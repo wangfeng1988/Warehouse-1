@@ -27,6 +27,11 @@
 			method="selectDetails">
 			<result name="success">/detailsWarehousingEntry.jsp</result>
 		</action>
-
+		
+		<action name="toExcel_WarehousingEntry" class="warehousingEntryAction"
+			method="toExcel">
+			<result name="success">/MakeExcel.jsp</result>
+		</action>
+		
 	</package>
 </struts>

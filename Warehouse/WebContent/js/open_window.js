@@ -22,5 +22,6 @@ function openFormWin(f, n, w, h)
 	if (!openwin.opener)
 		openwin.opener = self;
 	openwin.focus();
+	
 	return openwin;
 }
