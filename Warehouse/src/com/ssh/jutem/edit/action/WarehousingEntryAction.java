@@ -72,24 +72,16 @@ public class WarehousingEntryAction extends ActionSupport
 	{
 		System.out.println("this is select entry");
 		System.out.println(id);
+		System.out.println(isExcel);
 		
 		entry_detials=entryService.selectDetial(id);
 		
 		System.out.println(entry_detials.toString());
 		
-		return SUCCESS;
-	}
-	
-	public String toExcel() throws Exception
-	{
-		System.out.println("this is to excel");
-		System.out.println(id);
-		
-		entry_detials=entryService.selectDetial(toExcel_id);
-		
-		System.out.println(entry_detials.toString());
-		
-		return SUCCESS;
+		if(isExcel==1)
+			return "excel";
+		else
+			return SUCCESS;
 	}
 	
 	/*get(),set()*/
@@ -141,13 +133,13 @@ public class WarehousingEntryAction extends ActionSupport
 	public void setEntry_detials(WarehousingEntry entry_detials) {
 		this.entry_detials = entry_detials;
 	}
-	public int getToExcel_id() {
-		return toExcel_id;
-	}
-	public void setToExcel_id(int toExcel_id) {
-		this.toExcel_id = toExcel_id;
+	public int getIsExcel() {
+		return isExcel;
 	}
 
+	public void setIsExcel(int isExcel) {
+		this.isExcel = isExcel;
+	}
 
 	private WarehousingEntry entryBean;
 	private List<Material> materialBeans;
@@ -161,9 +153,8 @@ public class WarehousingEntryAction extends ActionSupport
 	/*查询详情*/
 	private int id;
 	private WarehousingEntry entry_detials;
-	
 	/*excel*/
-	private int toExcel_id;
+	private int isExcel=0; //可改成boolean，strutsBean赋值
 	
 	@Resource
 	private IWarehousingEntryService entryService; 

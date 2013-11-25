@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="js/insert_material.js"></script>
 <script type="text/javascript" src="js/prepared.js"></script>
 <script type="text/javascript" src="js/open_window.js"></script>
 <script type="text/javascript" src="js/add_delete_td.js"></script>
@@ -57,7 +56,7 @@
 				</div>
 
 				<div id="material_information">
-					<table id="material_information" border="1">
+					<table id="goal_table" border="1">
 						<tr>
 							<th>选择</th>
 							<th>物料编码</th>

@@ -25,6 +25,7 @@
 		
 		<action name="selectDetails_MaterialsRequisition" class="materialsRequisitionAction"
 			method="selectDetails">
+			<result name="excel">/makeExcelRequisition.jsp</result>
 			<result name="success">/detailsMaterialsRequisition.jsp</result>
 		</action>
 		

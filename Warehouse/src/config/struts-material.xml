@@ -8,13 +8,8 @@
 
 		<action name="select_Material" class="materialAction"
 			method="select">
+			<result name="for_req">/selectMatForReq.jsp</result>
 			<result name="success">/selectMaterial.jsp</result>
-		</action>
-		
-		<action name="test" class="materialAction"
-			method="test">
-			<result name="success">/selectMatForReq.jsp</result>
-		</action>
-		
+		</action>		
 	</package>
 </struts>

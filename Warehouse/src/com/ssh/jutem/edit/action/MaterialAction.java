@@ -20,14 +20,10 @@ public class MaterialAction extends ActionSupport
 		
 		System.out.println(result);
 		
-		return SUCCESS;
-	}
-	
-	public String test()
-	{
-		System.out.println("test");
-		
-		return SUCCESS;
+		if(type==1)
+			return "for_req";
+		else
+			return SUCCESS;
 	}
 	
 	/*get(),set()*/
@@ -55,10 +51,22 @@ public class MaterialAction extends ActionSupport
 	public void setMaterialService(IMaterialService materialService) {
 		this.materialService = materialService;
 	}
-	
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	/*查询*/
 	private String searchKey;
 	private String searchType;
+	
+	/*type
+	 * 0,普通查询
+	 * 1,为领料出库单查询
+	 * */
+	private int type=0;
 	
 	private List<Material> result=new ArrayList<Material>();
 	

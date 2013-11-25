@@ -65,7 +65,10 @@ public class MaterialsRequisitionAction extends ActionSupport
 		
 		System.out.println(requisition_detials.toString());
 		
-		return SUCCESS;
+		if(isExcel==1)
+			return "excel";
+		else
+			return SUCCESS;
 	}
 		
 	/*get(),set()*/
@@ -116,7 +119,6 @@ public class MaterialsRequisitionAction extends ActionSupport
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -125,6 +127,13 @@ public class MaterialsRequisitionAction extends ActionSupport
 	}
 	public void setRequisition_detials(MaterialsRequisition requisition_detials) {
 		this.requisition_detials = requisition_detials;
+	}
+	public int getIsExcel() {
+		return isExcel;
+	}
+
+	public void setIsExcel(int isExcel) {
+		this.isExcel = isExcel;
 	}
 
 	private List<Material> materialBeans;
@@ -140,6 +149,9 @@ public class MaterialsRequisitionAction extends ActionSupport
 	/*查询详情*/
 	private int id;
 	private MaterialsRequisition requisition_detials;
+	
+	/*excel*/
+	private int isExcel=0; //可改成boolean，strutsBean赋值
 	
 	@Resource
 	private IMaterialsRequisitionService requisitionService;

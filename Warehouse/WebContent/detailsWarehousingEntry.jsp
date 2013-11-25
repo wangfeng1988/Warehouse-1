@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="browserscripting">
+<body class="browserscripting" >
 
 	<div id="wrapper">
 	
@@ -44,6 +44,7 @@
 						<th>数量</th>
 						<th>入库价值</th>
 						<th>备注</th>
+					</tr>
 					<s:iterator value="entry_detials.materials" id="material">
 						<tr>
 							<td>1</td>
@@ -65,15 +66,12 @@
 					</tr>
 				</table>
 				
-				<form action="toExcel_WarehousingEntry">
-					<input type="hidden" value=<s:property value="entry_detials.id"/> name="toExcel_id"/>
-					<input type="submit" value="hello"/>
+				<form action="selectDetails_WarehousingEntry">
+					<input type="hidden" value=<s:property value="entry_detials.id"/> name="id"/>
+					<input type="hidden" value="1" name="isExcel" />
+					<input type="submit" value="导出EXCEL"/>
 				</form>
 				
-<%-- 				<script>			
-					//这里理论上应该是用document.appenChild(a)的，直接write会覆盖整个文档,但是很奇怪现在反而要这么写
-					document.write("<a href='MakeExcel.jsp?table1="+document.getElementById("details").innerHTML+"'>导出excel</a>"); 
-				</script> --%>
 		</div>
 	</div>
 	
