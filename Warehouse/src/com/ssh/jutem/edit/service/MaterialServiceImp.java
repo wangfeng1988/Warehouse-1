@@ -75,7 +75,10 @@ public class MaterialServiceImp implements IMaterialService
 	public void setMaterialDao(IMaterialDao materialDao) {
 		this.materialDao = materialDao;
 	}
-	
+	public static List<?> getAllOfMaterial() {
+		return allOfMaterial;
+	}
+
 	/*Material cache*/
 	private static List<?> allOfMaterial;
 	private static boolean isCache=false;

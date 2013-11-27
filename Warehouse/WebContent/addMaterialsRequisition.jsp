@@ -8,10 +8,11 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="js/prepared.js"></script>
 <script type="text/javascript" src="js/open_window.js"></script>
 <script type="text/javascript" src="js/add_delete_td.js"></script>
+<script type="text/javascript" src="js/makeForm.js"></script>
+
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
@@ -24,7 +25,7 @@
 	<div id="wrapper">
 		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
 			<h1>添加领料出库单</h1>
-			<form action="add_MaterialsRequisition" method="post">
+			<form id="requisition_form" action="add_MaterialsRequisition" method="post">
 				<div id="form_information">
 					<ul class="ul_nav">
 						<li>制单日期：<input id="prepared_date" name="requisitionBean.prepared_by_date" />
@@ -42,7 +43,7 @@
 								<s:param>requisitionBean.original_invoice_number</s:param>
 							</s:fielderror>
 						</li>
-						<li>进货仓库：<input name="requisitionBean.shipping_warehouse" />
+						<li>发货仓库：<input name="requisitionBean.shipping_warehouse" />
 							<s:fielderror>
 								<s:param>requisitionBean.shipping_warehouse</s:param>
 							</s:fielderror>
@@ -61,9 +62,10 @@
 							<th>选择</th>
 							<th>物料编码</th>
 							<th>物料名称</th>
+							<th>物料规格</th>
 							<th>单位</th>
 							<th>单价</th>
-							<th>数量</th>
+							<th>需求数量</th>
 							<th>金额</th>
 							<th>备注</th>
 						</tr>
@@ -95,7 +97,7 @@
 						</li>
 					</ul>
 				</div>								
-				<input type="submit" value="提交" />
+				<input type="submit" value="提交" onclick="makeRequisition()"/>
 			</form>
 		</div>
 	</div>

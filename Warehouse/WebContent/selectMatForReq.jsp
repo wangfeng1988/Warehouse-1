@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type="text/javascript" src="js/insert_materials.js"></script>
+<script type="text/javascript" src="js/tableTotable.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
@@ -34,7 +34,7 @@
 						</select>
 						</li>
 						<li><input type="hidden" value="1" name="type" /></li>
-						<li><input type="submit" value="搜索" /></li>
+						<li><input type="submit" value="搜索" onclick="checkStock()"/></li>
 					</ul>
 				</form>
 			</div>
@@ -52,10 +52,13 @@
 						<th>现有数量</th>
 						<th>备注</th>
 						<th>需求数量</th>
-					</tr>				
+					</tr>
+					<tr>
+						<th><input type="hidden" id="box" /></th> 
+					</tr>
 					<s:iterator value="result" id="material">
 						<tr>
-							<th><input type=checkbox id="box" /></th>
+							<th><input type="checkbox" id="box" /></th>
 							<td><s:property value="#material.coding" /></td>
 							<td><s:property value="#material.name" /></td>
 							<td><s:property value="#material.specification" /></td>
@@ -65,6 +68,7 @@
 							<td><s:property value="#material.stock" /></td>
 							<td><s:property value="#material.remark" /></td>
 							<td><input type="text" /></td>
+							<td><input value=<s:property value="#material.id" /> ></td>
 						</tr>
 					</s:iterator>
 				</table>
