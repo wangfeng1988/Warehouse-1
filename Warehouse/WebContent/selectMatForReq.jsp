@@ -25,7 +25,7 @@
 			</div>
 
 			<div id="search_information">
-				<form action="select_Material" method="post">
+				<form id="select_form" action="select_Material" method="post">
 					<ul class="ul_nav">
 						<li>关键字:<s:textfield name="searchKey" /></li>
 						<li>搜索类型: <select name="searchType">
@@ -34,13 +34,14 @@
 						</select>
 						</li>
 						<li><input type="hidden" value="1" name="type" /></li>
-						<li><input type="submit" value="搜索" onclick="checkStock()"/></li>
+						<li><input type="submit" value="搜索" /></li>
 					</ul>
 				</form>
 			</div>
 
 			<div id="select_result">
-				<table id="result_table" border="1">
+				<input type="hidden" id="box" />
+				<table id="result_table" border="1" >
 					<tr>
 						<th>序号</th>
 						<th>货品编码</th>
@@ -52,9 +53,6 @@
 						<th>现有数量</th>
 						<th>备注</th>
 						<th>需求数量</th>
-					</tr>
-					<tr>
-						<th><input type="hidden" id="box" /></th> 
 					</tr>
 					<s:iterator value="result" id="material">
 						<tr>

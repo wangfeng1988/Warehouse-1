@@ -10,8 +10,9 @@
 
 <script type="text/javascript" src="js/prepared.js"></script>
 <script type="text/javascript" src="js/open_window.js"></script>
-<script type="text/javascript" src="js/add_delete_td.js"></script>
 <script type="text/javascript" src="js/makeForm.js"></script>
+<script type="text/javascript" src="js/tableTotable.js"></script>
+
 
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -56,7 +57,9 @@
 					</ul>
 				</div>
 
+
 				<div id="material_information">
+					<input type="hidden" id="box" />
 					<table id="goal_table" border="1">
 						<tr>
 							<th>选择</th>
@@ -68,9 +71,9 @@
 							<th>需求数量</th>
 							<th>金额</th>
 							<th>备注</th>
-						</tr>
+						</tr>			
 					</table>
-					
+						
 					<s:fielderror>
 						<s:param>material_error</s:param>
 					</s:fielderror>
@@ -80,7 +83,7 @@
 							<input type="button" value="查询" onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450')" />
 						</li>	
 						<li>
-							<input type="button" value="删除" onclick="javascript:DelRow();" />
+							<input type="button" value="删除" onclick="delMaterial()" />
 						</li>							
 					</ul>
 				</div>
@@ -96,8 +99,8 @@
 							</s:fielderror>
 						</li>
 					</ul>
-				</div>								
-				<input type="submit" value="提交" onclick="makeRequisition()"/>
+				</div>	
+				<input type="submit" value="提交" onclick="makeRequisition()" />
 			</form>
 		</div>
 	</div>

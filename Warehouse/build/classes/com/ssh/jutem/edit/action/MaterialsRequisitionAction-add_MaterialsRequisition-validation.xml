@@ -9,9 +9,9 @@
 	</field>
 		
 	<field name="requisitionBean.document_number"> 	
-		<field-validator type="requiredstring">
+<!-- 		<field-validator type="requiredstring">
 			<message>请输入单据号码</message>
-      	</field-validator> 	
+      	</field-validator> --> 	
       	<field-validator type="int">
 			<param name="min">1000</param>
 			<param name="max">9999</param>
@@ -20,9 +20,9 @@
 	</field>
 	
 	<field name="requisitionBean.original_invoice_number">  
-		<field-validator type="requiredstring">
+<!-- 		<field-validator type="requiredstring">
 			<message>请输入原始单号</message>
-      	</field-validator> 	  	
+      	</field-validator> --> 	  	
       	<field-validator type="int">
 			<param name="min">1000</param>
 			<param name="max">9999</param>

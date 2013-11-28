@@ -37,7 +37,8 @@ public class MaterialsRequisitionServiceImp implements IMaterialsRequisitionServ
 			requisition_material.get(i).setRequisition(requisitionBean);
 		}
 		
-		/*修改物料库存*/
+		/*修改物料库存
+		 *提交领料单必须进行查询物料，所以已经做过缓存*/
 		List<?> materials=MaterialServiceImp.getAllOfMaterial();
 		for(int i=0;i<materialBeans.size();i++)
 		{
@@ -46,6 +47,9 @@ public class MaterialsRequisitionServiceImp implements IMaterialsRequisitionServ
 				continue;
 			double stock=((Material)materials.get(i)).getStock();
 			double need=requisition_material.get(i).getNumber();
+			
+			System.out.println(stock+" "+need);
+			
 			materialBeans.get(i).setStock(stock-need);
 		}
 

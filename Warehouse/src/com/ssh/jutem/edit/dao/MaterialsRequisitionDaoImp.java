@@ -23,13 +23,13 @@ public class MaterialsRequisitionDaoImp implements IMaterialsRequisitionDao
 		s.save(requisitionBean);
 		
 		/*更新物料表数量*/
-		String hql="update Material m set m.amount=:amount where m.id=:id";
+		String hql="update Material m set m.stock=:stock where m.id=:id";
 		for(Material m:materialBeans)
 		{
 			if(m==null)
 				continue;
 			Query q=s.createQuery(hql);
-			q.setParameter("amount", m.getAmount());
+			q.setParameter("stock", m.getStock());
 			q.setParameter("id", m.getId());
 			q.executeUpdate();
 		}
