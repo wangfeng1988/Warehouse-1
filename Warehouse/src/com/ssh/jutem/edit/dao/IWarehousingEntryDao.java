@@ -11,4 +11,5 @@ public interface IWarehousingEntryDao
 	public boolean modify(WarehousingEntry warehousing_entry);
 	public List<?> selectAll();
 	public Object selectById(int id);
+	public List<?> selectByYearMonth(String year_month);
 }

@@ -150,8 +150,6 @@ public class WarehousingEntryServiceImp implements IWarehousingEntryService
 		return allOfEntry;
 	}
 	
-
-	
 	/*get(),set()*/
 	public IWarehousingEntryDao getEntryDao() 
 	{

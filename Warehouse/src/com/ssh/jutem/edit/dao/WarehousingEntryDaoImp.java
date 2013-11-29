@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ssh.jutem.edit.model.WarehousingEntry;
 
@@ -53,6 +56,30 @@ public class WarehousingEntryDaoImp implements IWarehousingEntryDao {
 		return this.getSession().get(LISTNAME, id);
 	}
 	
+	@SuppressWarnings("resource")
+	@Override
+	/*这个方法为task服务，task似乎不能使用spring注入session*/
+	public List<?> selectByYearMonth(String year_month) 
+	{
+/*		System.out.println("This is select by year month");
+		
+		不要包含所有配置文件，否则会不停执行
+		 * 因为可能包含到timer会不停开线程
+		ApplicationContext ac =new ClassPathXmlApplicationContext("classpath:config/applicationContext-common.xml");
+		
+		SessionFactory sessionFactory=(SessionFactory) ac.getBean("sessionFactory");
+		Session s=sessionFactory.getCurrentSession();
+		
+		Transaction t=s.beginTransaction();
+		
+		String hql = "from WarehousingEntry as model where model.prepared_by_date like :date";
+		List<?> result=s.createQuery(hql).setParameter("date", year_month+"%").list();	
+		
+		t.commit();
+		
+		return result;*/
+		return null;
+	}
 	
 	/*get(),set()*/
 	public void setSessionFactory(SessionFactory sessionFactory)

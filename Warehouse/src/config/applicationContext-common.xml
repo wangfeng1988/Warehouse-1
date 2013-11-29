@@ -17,7 +17,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/WarehouseManage?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
-		<property name="password" value="woshiren3" />
+		<property name="password" value="woshiren3" />	
 	</bean>
 
 	<bean id="sessionFactory"
@@ -30,16 +30,18 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="default_schema">ssh</prop>
-
+				<!-- 线程 -->
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
 			</props>
 		</property>
 		
 		<property name="annotatedClasses">
 			<list>
 				<value>com.ssh.jutem.edit.model.WarehousingEntry</value>
+				<value>com.ssh.jutem.edit.model.WarehousingEntryCollect</value>
 				<value>com.ssh.jutem.edit.model.Material</value>
 				<value>com.ssh.jutem.edit.model.MaterialsRequisition</value>
-				<value>com.ssh.jutem.edit.model.Requisition_Material</value>
+				<value>com.ssh.jutem.edit.model.Requisition_Material</value>	
 			</list>
 		</property>
 
