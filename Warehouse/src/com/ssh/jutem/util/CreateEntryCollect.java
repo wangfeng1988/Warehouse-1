@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TimerTask;
 
-import org.springframework.test.context.ContextConfiguration;
-
 import com.ssh.jutem.edit.dao.IWarehousingEntryCollectDao;
 import com.ssh.jutem.edit.dao.IWarehousingEntryDao;
 import com.ssh.jutem.edit.dao.WarehousingEntryCollectDaoImp;
@@ -16,7 +14,6 @@ import com.ssh.jutem.edit.dao.WarehousingEntryDaoImp;
 import com.ssh.jutem.edit.model.WarehousingEntry;
 import com.ssh.jutem.edit.model.WarehousingEntryCollect;
 
-@ContextConfiguration(locations = "classpath:config/applicationContext-*.xml")
 public class CreateEntryCollect extends TimerTask
 {
 	@Override
@@ -25,12 +22,14 @@ public class CreateEntryCollect extends TimerTask
 		Calendar today=Calendar.getInstance();
 		
 		/*如果为一号就生成上一个月的入库单汇总表*/
-		if(today.get(Calendar.DAY_OF_MONTH)==29)
+		if(today.get(Calendar.DAY_OF_MONTH)==1)
 		{	
+			System.out.println("this is  create");
+			
 			int last_year=today.get(Calendar.YEAR);
-			int last_month=today.get(Calendar.MONTH)+1;
+			int last_month=today.get(Calendar.MONTH);//0-11
 			/*如果为一月就生成去年十二月的汇总表*/
-			if(today.get(Calendar.MONTH)==1)
+			if(today.get(Calendar.MONTH)==0)
 			{
 				last_year=last_year-1;
 				last_month=12;
@@ -47,9 +46,13 @@ public class CreateEntryCollect extends TimerTask
 			
 			List<?> entrys=entryDao.selectByYearMonth(year_month);
 			
-			WarehousingEntryCollect collect=createCollect(year_month,entrys);
-			
-			collectDao.add(collect);
+			/*上个月有入库单*/
+			if(entrys.size()!=0)
+			{
+				WarehousingEntryCollect collect=createCollect(year_month,entrys);
+				collectDao.add(collect);
+			}
+
 		}
 	
 		System.out.println(new Date(System.currentTimeMillis()));

@@ -38,9 +38,10 @@
 	</bean>
 	
 	<!-- Timmer -->
-<!-- 	<bean id="timerTask" class="com.ssh.jutem.util.CreateEntryCollect" />
+	<bean id="timerTask" class="com.ssh.jutem.util.CreateEntryCollect" />
 	<bean id="scheduledTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
-		间隔为一天
+		<!-- 间隔为一天 -->
+		<property name="delay" value="60000"></property> 
 		<property name="period" value="86400000"></property>
 		<property name="timerTask" ref="timerTask"></property>
 	</bean>
@@ -51,7 +52,7 @@
 				<ref local="scheduledTask"></ref>
 			</list>
 		</property>
-	</bean>  -->
+	</bean> 
 
 	
 	<!-- 日期处理 -->

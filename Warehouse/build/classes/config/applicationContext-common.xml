@@ -44,8 +44,8 @@
 				<value>com.ssh.jutem.edit.model.Requisition_Material</value>	
 			</list>
 		</property>
-
 	</bean>
+
 	
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
