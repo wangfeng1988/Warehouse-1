@@ -12,5 +12,5 @@ public interface IMaterialsRequisitionDao
 	public boolean modify(MaterialsRequisition materials_requisition);
 	public List<?> selectAll();
 	public Object selectById(int id);
-
+	public List<?> selectByYearMonth(String year_month);
 }

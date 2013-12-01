@@ -15,7 +15,7 @@ public class CreateEntryCollectTest
 	public static void BeforeClass()
 	{
 		mytimer=new Timer();
-		mycreate=new CreateEntryCollect();
+		mycreate=new CreateCollectAndDetail();
 		
 	}
 
@@ -32,6 +32,6 @@ public class CreateEntryCollectTest
 
 	}
 	
-	private static CreateEntryCollect mycreate;
+	private static CreateCollectAndDetail mycreate;
 	private static Timer mytimer;
 }

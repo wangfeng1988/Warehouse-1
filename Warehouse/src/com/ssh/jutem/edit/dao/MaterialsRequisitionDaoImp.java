@@ -5,6 +5,9 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ssh.jutem.edit.model.Material;
 import com.ssh.jutem.edit.model.MaterialsRequisition;
@@ -68,6 +71,34 @@ public class MaterialsRequisitionDaoImp implements IMaterialsRequisitionDao
 	{
 		System.out.println("This is selectById");
 		return this.getSession().get(LISTNAME, id);
+	}
+	
+	@SuppressWarnings("resource")
+	@Override
+	public List<?> selectByYearMonth(String year_month) 
+	{
+		System.out.println("This is select by year month");
+		
+		/*不要包含所有配置文件，否则会不停执行
+		 * 因为可能包含到timer会不停开线程*/
+		ApplicationContext ac =new ClassPathXmlApplicationContext("classpath:config/applicationContext-common.xml");
+		
+		SessionFactory sessionFactory=(SessionFactory) ac.getBean("sessionFactory");
+		Session s=sessionFactory.openSession();
+		
+		Transaction t=s.beginTransaction();
+		
+		String hql = "from MaterialsRequisition as model where model.prepared_by_date like :date";
+		
+		//test
+		System.out.println(year_month);
+		
+		List<?> result=s.createQuery(hql).setParameter("date", year_month+"%").list();	
+		
+		t.commit();
+		s.close();
+		
+		return result;
 	}
 
 	/*get(),set()*/

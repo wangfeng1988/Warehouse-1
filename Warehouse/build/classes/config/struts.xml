@@ -14,6 +14,7 @@
 	<include file="/config/struts-warehousing_entry.xml"></include>
 	<include file="/config/struts-warehousing_entryCollect.xml"></include>
 	<include file="/config/struts-materials_requisition.xml"></include>
+	<include file="/config/struts-materials_requisitionCollect.xml"></include>
 	<include file="/config/struts-material.xml"></include>
 
 </struts>

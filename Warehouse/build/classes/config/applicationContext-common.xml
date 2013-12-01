@@ -42,6 +42,8 @@
 				<value>com.ssh.jutem.edit.model.WarehousingEntryCollectDetail</value>
 				<value>com.ssh.jutem.edit.model.Material</value>
 				<value>com.ssh.jutem.edit.model.MaterialsRequisition</value>
+				<value>com.ssh.jutem.edit.model.MaterialsRequisitionCollect</value>
+				<value>com.ssh.jutem.edit.model.MaterialsRequisitionCollectDetail</value>
 				<value>com.ssh.jutem.edit.model.Requisition_Material</value>	
 			</list>
 		</property>

@@ -11,6 +11,7 @@
 	<bean name="warehousingEntryAction" class="com.ssh.jutem.edit.action.WarehousingEntryAction" scope="prototype" />
 	<bean name="warehousingEntryCollectAction" class="com.ssh.jutem.edit.action.WarehousingEntryCollectAction" scope="prototype" />
 	<bean name="materialsRequisitionAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionAction" scope="prototype" />
+	<bean name="materialsRequisitionCollectAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionCollectAction" scope="prototype" />
 	<bean name="materialAction" class="com.ssh.jutem.edit.action.MaterialAction" scope="prototype" />
 	
 	<!-- 管理service -->
@@ -18,6 +19,7 @@
 	<bean id="entryCollectService" class="com.ssh.jutem.edit.service.WarehousingEntryCollectServiceImp" />
 	<bean id="orderService" class="com.ssh.jutem.edit.service.DeliveryOrderServiceImp" />
 	<bean id="requisitionService" class="com.ssh.jutem.edit.service.MaterialsRequisitionServiceImp" />
+	<bean id="requisitionCollectService" class="com.ssh.jutem.edit.service.MaterialsRequisitionCollectServiceImp" />
 	<bean id="materialService" class="com.ssh.jutem.edit.service.MaterialServiceImp" />
 
 	<!-- 管理dao -->
@@ -33,12 +35,16 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean id="requisitionCollectDao" class="com.ssh.jutem.edit.dao.MaterialsRequisitionCollectDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	<bean id="materialDao" class="com.ssh.jutem.edit.dao.MaterialDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- Timmer -->
-	<bean id="timerTask" class="com.ssh.jutem.util.CreateEntryCollect" />
+	<bean id="timerTask" class="com.ssh.jutem.util.CreateCollectAndDetail" />
 	<bean id="scheduledTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
 		<!-- 间隔为一天 -->
 		<property name="delay" value="60000"></property> 
