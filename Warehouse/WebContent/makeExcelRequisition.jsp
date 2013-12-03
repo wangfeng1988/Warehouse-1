@@ -1,6 +1,6 @@
 <%@ page contentType="application/vnd.ms-excel; charset=utf-8"%>
 <%
-response.setHeader("Content-disposition","attachment; filename=resource.xls");
+response.setHeader("Content-disposition","attachment; filename=requisition.xls");
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,9 +45,9 @@ response.setHeader("Content-disposition","attachment; filename=resource.xls");
 			<th>备注</th>
 		</tr>
 
-		<s:iterator value="requisition_detials.requisition_material" id="rm">
+		<s:iterator value="requisition_detials.requisition_material" id="rm" status="index">
 			<tr>
-				<td>1</td>
+				<td><s:property value="#index.index" /></td>
 				<td><s:property value="#rm.material.coding" /></td>
 				<td><s:property value="#rm.material.name" /></td>
 				<td><s:property value="#rm.material.specification" /></td>

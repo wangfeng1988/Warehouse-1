@@ -8,4 +8,5 @@ public interface IWarehousingEntryCollectDao
 {
 	public void add(WarehousingEntryCollect collect);
 	public List<?> selectAll();
+	public Object selectById(int id);
 }

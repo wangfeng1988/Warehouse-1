@@ -2,62 +2,49 @@ package com.ssh.jutem.edit.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.ssh.jutem.edit.model.Material;
-import com.ssh.jutem.edit.model.WarehousingEntry;
-import com.ssh.jutem.edit.service.IWarehousingEntryService;
+import com.ssh.jutem.assist.model.SupplierOfEntry;
+import com.ssh.jutem.edit.model.WarehousingEntryCollect;
+import com.ssh.jutem.edit.service.IWarehousingEntryCollectService;
 
 public class WarehousingEntryCollectAction extends ActionSupport
 {
-	public String add() throws Exception
+
+	//由于点击详情会刷新搜索页面，这个时候存在BUG会使以下两项为空，所以验证防止出错（之后ajax修改)
+	public void validateSelect()
 	{
-		System.out.println("this is warehousing entry action");	
-		System.out.println(entryBean.toString());
-		for(Material m:materialBeans)
-			System.out.println(m.toString());
-		
-		if(!entryService.add(entryBean,materialBeans))
-			System.out.println("spring success");
-		return SUCCESS;
-	}
-	
-	public String delete() throws Exception
-	{
-		System.out.println("this is warehousing delete action");
-		if(!entryService.delete(entryBean))
-			System.out.println("spring success");
-		return SUCCESS;
-	}
-	
-	public String modify() throws Exception
-	{
-		return SUCCESS;
+		if(searchKey==null || searchType==null)
+			addFieldError("search_error","请填写必要信息");
 	}
 	
 	public String select() throws Exception
 	{
-		System.out.println("this is select entry");
+		System.out.println("this is select entry collect");
 		System.out.println(searchKey+"   "+searchType);
 		
-		result=entryService.select(searchKey, searchType);
+		result=entryCollectService.select(searchKey, searchType);
 		
 		System.out.println(result);
 		
 		return SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String selectDetails() throws Exception
 	{
-		System.out.println("this is select entry");
+		System.out.println("this is select entry collect details");
 		System.out.println(id);
 		System.out.println(isExcel);
 		
-		entry_detials=entryService.selectDetial(id);
+		entryCollect_detials=(WarehousingEntryCollect) entryCollectService.selectDetial(id).get("Collect");
+		supplier_of_entrys=(Set<SupplierOfEntry>) entryCollectService.selectDetial(id).get("SupplierOfEntry");
 		
-		System.out.println(entry_detials.toString());
+		System.out.println(entryCollect_detials.toString());
+		System.out.println(supplier_of_entrys.toString());
 		
 		if(isExcel==1)
 			return "excel";
@@ -66,34 +53,16 @@ public class WarehousingEntryCollectAction extends ActionSupport
 	}
 	
 	/*get(),set()*/
-	public WarehousingEntry getEntryBean() {
-		return entryBean;
-	}
-	public void setEntryBean(WarehousingEntry entryBean) {
-		this.entryBean = entryBean;
-	}
-	public IWarehousingEntryService getEntryService() {
-		return entryService;
-	}
-	public void setEntryService(IWarehousingEntryService entryService) {
-		this.entryService = entryService;
-	}	
-	public List<Material> getMaterialBeans() {
-		return materialBeans;
-	}
-	public void setMaterialBeans(List<Material> materialBeans) {
-		this.materialBeans = materialBeans;
-	}
 	public String getSearchKey() {
 		return searchKey;
 	}
 	public void setSearchKey(String searchKey) {
 		this.searchKey = searchKey;
 	}
-	public List<WarehousingEntry> getResult() {
+	public List<WarehousingEntryCollect> getResult() {
 		return result;
 	}
-	public void setResult(List<WarehousingEntry> result) {
+	public void setResult(List<WarehousingEntryCollect> result) {
 		this.result = result;
 	}
 	public String getSearchType() {
@@ -108,37 +77,53 @@ public class WarehousingEntryCollectAction extends ActionSupport
 	public void setId(int id) {
 		this.id = id;
 	}
-	public WarehousingEntry getEntry_detials() {
-		return entry_detials;
+	public WarehousingEntryCollect getEntryCollect_detials() {
+		return entryCollect_detials;
 	}
-	public void setEntry_detials(WarehousingEntry entry_detials) {
-		this.entry_detials = entry_detials;
+	public void setEntryCollect_detials(WarehousingEntryCollect entryCollect_detials) {
+		this.entryCollect_detials = entryCollect_detials;
+	}
+	public IWarehousingEntryCollectService getEntryCollectService() {
+		return entryCollectService;
+	}
+	public void setEntryCollectService(
+			IWarehousingEntryCollectService entryCollectService) {
+		this.entryCollectService = entryCollectService;
 	}
 	public int getIsExcel() {
 		return isExcel;
 	}
-
 	public void setIsExcel(int isExcel) {
 		this.isExcel = isExcel;
 	}
+	public Set<SupplierOfEntry> getSupplier_of_entrys() {
+		return supplier_of_entrys;
+	}
+	public void setSupplier_of_entrys(Set<SupplierOfEntry> supplier_of_entrys) {
+		this.supplier_of_entrys = supplier_of_entrys;
+	}
 
-	private WarehousingEntry entryBean;
-	private List<Material> materialBeans;
+/*	private WarehousingEntryCollect entryCollectBean;
+	private List<WarehousingEntry> entryBeans;*/
 	
 	/*查询*/
 	private String searchKey;
 	private String searchType;
 	
-	private List<WarehousingEntry> result=new ArrayList<WarehousingEntry>();
+	private List<WarehousingEntryCollect> result=new ArrayList<WarehousingEntryCollect>();
 	
 	/*查询详情*/
 	private int id;
-	private WarehousingEntry entry_detials;
+	private WarehousingEntryCollect entryCollect_detials;
+	
+	/*查询明细,分类汇总*/
+	private Set<SupplierOfEntry> supplier_of_entrys;
+	
 	/*excel*/
 	private int isExcel=0; //可改成boolean，strutsBean赋值
 	
 	@Resource
-	private IWarehousingEntryService entryService; 
+	private IWarehousingEntryCollectService entryCollectService; 
 	
 	private static final long serialVersionUID = 1L;
 }

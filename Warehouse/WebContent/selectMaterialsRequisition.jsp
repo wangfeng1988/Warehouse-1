@@ -76,9 +76,9 @@
 						<th>备注</th>
 						<th>详情</th>
 					</tr>
-					<s:iterator value="result" id="requisition">
+					<s:iterator value="result" id="requisition" status="index">
 						<tr>
-							<th class="spec">1</th>
+							<th class="spec"><s:property value="#index.index" /></th>
 							<td><s:property value="#requisition.prepared_by_date" /></td>
 							<td><s:property value="#requisition.document_number" /></td>
 							<td><s:property value="#requisition.original_invoice_number" /></td>

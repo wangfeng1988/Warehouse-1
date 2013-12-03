@@ -25,7 +25,7 @@
 		
 		<action name="selectDetails_WarehousingEntry" class="warehousingEntryAction"
 			method="selectDetails">
-			<result name="excel">/MakeExcelEntry.jsp</result>
+			<result name="excel">/makeExcelEntry.jsp</result>
 			<result name="success">/detailsWarehousingEntry.jsp</result>
 		</action>
 				

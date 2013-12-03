@@ -73,9 +73,9 @@
 						<th>金额</th>
 						<th>备注</th>
 					</tr>				
-					<s:iterator value="result" id="material">
+					<s:iterator value="result" id="material" status="index">
 						<tr>
-							<th class="spec">1</th>
+							<th class="spec"><s:property value="#index.index" /></th>
 							<td><s:property value="#material.coding" /></td>
 							<td><s:property value="#material.name" /></td>
 							<td><s:property value="#material.specification" /></td>

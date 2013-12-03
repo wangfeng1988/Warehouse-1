@@ -12,6 +12,7 @@
     
 	<!-- 包含的配置文件 -->
 	<include file="/config/struts-warehousing_entry.xml"></include>
+	<include file="/config/struts-warehousing_entryCollect.xml"></include>
 	<include file="/config/struts-materials_requisition.xml"></include>
 	<include file="/config/struts-material.xml"></include>
 

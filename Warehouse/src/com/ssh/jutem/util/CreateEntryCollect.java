@@ -70,7 +70,7 @@ public class CreateEntryCollect extends TimerTask
 			transfer_entrys.add((WarehousingEntry)e);
 		}
 
-		collect.setMakedYearMonth(year_month);
+		collect.setMaked_year_month(year_month);
 		collect.setTotal_money(total_money);
 		collect.setEntrys(new HashSet<WarehousingEntry>(transfer_entrys));
 		

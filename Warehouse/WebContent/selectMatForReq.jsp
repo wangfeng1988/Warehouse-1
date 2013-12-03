@@ -43,7 +43,7 @@
 				<input type="hidden" id="box" />
 				<table id="result_table" border="1" >
 					<tr>
-						<th>序号</th>
+						<th>选择</th>
 						<th>货品编码</th>
 						<th>货品名称</th>
 						<th>货品规格</th>
@@ -54,7 +54,7 @@
 						<th>备注</th>
 						<th>需求数量</th>
 					</tr>
-					<s:iterator value="result" id="material">
+					<s:iterator value="result" id="material" status="index">
 						<tr>
 							<th><input type="checkbox" id="box" /></th>
 							<td><s:property value="#material.coding" /></td>

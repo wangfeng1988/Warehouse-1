@@ -40,8 +40,15 @@ public class WarehousingEntryCollectDaoImp implements IWarehousingEntryCollectDa
 	{
 		System.out.println("this is selectAll");
 		
-		String queryString = "from Material";	
+		String queryString = "from WarehousingEntryCollect";	
 		return this.getSession().createQuery(queryString).list();	
+	}
+	
+	@Override
+	public Object selectById(int id) 
+	{
+		System.out.println("This is selectById");
+		return this.getSession().get(LISTNAME, id);
 	}
 
 	/*get(),set()*/
@@ -56,4 +63,6 @@ public class WarehousingEntryCollectDaoImp implements IWarehousingEntryCollectDa
 	}	
 	
 	private SessionFactory sessionFactory;
+
+	private static final String LISTNAME="com.ssh.jutem.edit.model.WarehousingEntryCollect";
 }

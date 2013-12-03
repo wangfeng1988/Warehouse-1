@@ -45,9 +45,9 @@
 					<th>备注</th>
 				</tr>
 
-				<s:iterator value="requisition_detials.requisition_material" id="rm">
+				<s:iterator value="requisition_detials.requisition_material" id="rm" status="index">
 				<tr>
-						<td>1</td>
+						<td><s:property value="#index.index" /></td>
 						<td><s:property value="#rm.material.coding" /></td>
 						<td><s:property value="#rm.material.name" /></td>
 						<td><s:property value="#rm.material.specification" /></td>

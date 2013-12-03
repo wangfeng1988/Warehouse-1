@@ -45,9 +45,9 @@
 						<th>入库价值</th>
 						<th>备注</th>
 					</tr>
-					<s:iterator value="entry_detials.materials" id="material">
+					<s:iterator value="entry_detials.materials" id="material" status="index">
 						<tr>
-							<td>1</td>
+							<td><s:property value="#index.index" /></td>
 							<td><s:property value="#material.coding" /></td>
 							<td><s:property value="#material.name" /></td>
 							<td><s:property value="#material.specification" /></td>

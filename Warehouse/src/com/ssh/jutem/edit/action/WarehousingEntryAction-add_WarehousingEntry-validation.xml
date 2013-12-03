@@ -9,7 +9,7 @@
 	</field>
 		
 	<field name="entryBean.document_number"> 	
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message>请输入单据号码</message>
       	</field-validator> 	
       	<field-validator type="int">
@@ -20,7 +20,7 @@
 	</field>
 	
 	<field name="entryBean.original_invoice_number">    
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message>请输入原始单号</message>
       	</field-validator> 		
       	<field-validator type="int">
