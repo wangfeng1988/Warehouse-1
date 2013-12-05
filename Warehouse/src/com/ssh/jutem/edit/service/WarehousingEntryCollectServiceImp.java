@@ -47,14 +47,14 @@ public class WarehousingEntryCollectServiceImp implements IWarehousingEntryColle
 	/*因为用了延迟加载所以这里不用缓存里的数据*/
 	public Map<String,Object> selectDetial(int id) 
 	{	
-		System.out.println("this is selectDetial service");
+		/*System.out.println("this is selectDetial service");
 		
 		WarehousingEntryCollect mycollect=(WarehousingEntryCollect) entryCollectDao.selectById(id);
 		Set<SupplierOfEntry> soes=new HashSet<SupplierOfEntry>();
 		
 		Map<String,Object> result=new HashMap<String,Object>();
 		
-		/*将entry根据供应商supplier进行归类*/
+		将entry根据供应商supplier进行归类
 		for(Object e:mycollect.getEntrys())
 		{
 			WarehousingEntry entry=(WarehousingEntry) e;
@@ -82,7 +82,8 @@ public class WarehousingEntryCollectServiceImp implements IWarehousingEntryColle
 		result.put("Collect", mycollect);
 		result.put("SupplierOfEntry", soes);
 		
-		return result;
+		return result;*/
+		return null;
 	}
 	
 	private List<?> selectAll() 

@@ -11,12 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class WarehousingEntryCollect 
+public class WarehousingEntryCollectDetail
 {
 	private int id;
 	private String maked_year_month;
+	private String supplier;
 	private double total_money;
-	private Set<WarehousingEntryCollectDetail> entrysdetail=new HashSet<WarehousingEntryCollectDetail>();
+	private String remark;
+	private Set<WarehousingEntry> entrys=new HashSet<WarehousingEntry>();
 	
 	@Id
 	@GeneratedValue
@@ -32,25 +34,38 @@ public class WarehousingEntryCollect
 	public void setMaked_year_month(String maked_year_month) {
 		this.maked_year_month = maked_year_month;
 	}
+	public String getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
+	}
 	public double getTotal_money() {
 		return total_money;
 	}
 	public void setTotal_money(double total_money) {
 		this.total_money = total_money;
 	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	@JoinColumn(name = "entrycollect_id")
-	public Set<WarehousingEntryCollectDetail> getEntrysdetail() {
-		return entrysdetail;
+	@JoinColumn(name = "entrycollectdetail_id")
+	public Set<WarehousingEntry> getEntrys() {
+		return entrys;
 	}
-	public void setEntrysdetail(Set<WarehousingEntryCollectDetail> entrysdetail) {
-		this.entrysdetail = entrysdetail;
+	public void setEntrys(Set<WarehousingEntry> entrys) {
+		this.entrys = entrys;
 	}
 	
 	@Override
 	public String toString() {
-		return "WarehousingEntryCollect [id=" + id + ", maked_year_month="
-				+ maked_year_month + ", total_money=" + total_money + "]";
+		return "WarehouseingEntryCollectDetail [supplier=" + supplier
+				+ ", total_money=" + total_money + ", remark=" + remark
+				+ ", entrys=" + entrys + "]";
 	}
 }
