@@ -11,9 +11,10 @@
 
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="js/nav.js" ></script>
-<script type="text/javascript" src="js/ajax_flush.js" ></script>
 <script type="text/javascript" src="js/open_window.js" ></script>
+<script type="text/javascript" src="js/tablecloth.js"></script>
 
+<link rel="stylesheet" type="text/css" href="css/tablecloth.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
 <title>临时页面</title>
@@ -23,17 +24,17 @@
 <body class="browserscripting">
 	<div id="wrapper">
 
-		<div id="navfirst"  STYLE="border-style:solid;border-width:5pt;">
+		<div id="navfirst">
 
 		</div>
 
-		<div id="navsecond" STYLE="border-style:solid;border-width:5pt;">
+		<div id="navsecond">
 			<jsp:include page="control/control_nav.jsp" />
 		</div>
 
-		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
+		<div id="maincontent" >
 		
-			<div id="head">
+			<div id="header">
 				<h1>查询收货入库单</h1>
 				<ul class="ul_nav">
 					<li id="help"><button class="funcation">帮助</button></li>
@@ -41,7 +42,7 @@
 					<li id="modify"><button class="funcation">修改</button></li>
 					<li id="collect"><button class="funcation" onclick="location.href='selectWarehousingEntryCollect.jsp';">汇总</button></li>
 					<li id="add"><button class="funcation" onclick="openFormWin('addWarehousingEntry.jsp','addWarehousingEntry','930','450')">增加</button></li>
-				</ul>
+				</ul>							
 			</div>
 
 			<div id="search_information">
@@ -61,44 +62,50 @@
 							<input type="submit" value="搜索"/>
 						</li>
 					</ul>
-				</form>
+				</form>				
 			</div>
-
-			<div id="select_result">				
-					<table border="1">
+			
+			<div id="table_head">
+				<table>
+					<tr>
+						<th>序号</th>
+						<th>制单日期</th>
+						<th>单据号码</th>
+						<th>原始单号</th>
+						<th>进货仓库</th>
+						<th>供应商</th>
+						<th>合计数量</th>
+						<th>合计金额</th>
+						<th>详情</th>
+					</tr>
+				</table>				
+			</div>
+			
+			<div id="table_result">
+				<table>
+					<s:iterator value="result" id="entry" status="index">
 						<tr>
-							<th>序号</th>
-							<th>制单日期</th>
-							<th>单据号码</th>
-							<th>原始单号</th>
-							<th>进货仓库</th>
-							<th>供应商</th>
-							<th>合计数量</th>
-							<th>合计金额</th>
-							<th>备注</th>
-							<th>详情</th>
-						</tr>
-						<s:iterator value="result" id="entry" status="index">
-						<tr>
-								<th class="spec"><s:property value="#index.index" /></th>
-								<td><s:property value="#entry.prepared_by_date" /></td>
-								<td><s:property value="#entry.document_number" /></td>
-								<td><s:property value="#entry.original_invoice_number" /></td>
-								<td><s:property value="#entry.shipping_warehouse" /></td>
-								<td><s:property value="#entry.supplier" /></td>
-								<td><s:property value="#entry.total_number" /></td>
-								<td><s:property value="#entry.total_money" /></td>
-								<td><s:property value="#entry.remark" /></td>
-								<td>
+							<th class="spec"><s:property value="#index.index" /></th>
+							<td><s:property value="#entry.prepared_by_date" /></td>
+							<td><s:property value="#entry.document_number" /></td>
+							<td><s:property value="#entry.original_invoice_number" /></td>
+							<td><s:property value="#entry.shipping_warehouse" /></td>
+							<td><s:property value="#entry.supplier" /></td>
+							<td><s:property value="#entry.total_number" /></td>
+							<td><s:property value="#entry.total_money" /></td>
+							<td>
 								<form>
-									<input type="submit" value="详情" onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
+									<input type="submit" value="详情"
+										onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
 								</form>
-								</td>
-								
+							</td>
 						</tr>
-						</s:iterator>
-					</table>
-				</div>			
+					</s:iterator>
+				</table>
+			</div>			
+		</div>
+		
+		<div id="footer">
 		</div>
 	</div>
 	

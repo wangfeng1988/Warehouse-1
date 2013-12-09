@@ -67,6 +67,7 @@
 							<th>制单年月</th>
 							<th>合计金额</th>
 							<th>详情</th>
+							<th>明细</th>
 						</tr>
 						<s:iterator value="result" id="entryCollect" status="index">
 						<tr>
@@ -76,6 +77,12 @@
 								<td>
 								<form>
 									<input type="submit" value="详情" onclick="openFormWin('transferToDetEntryCollect.jsp'+'?id=<s:property value="#entryCollect.id" />','detailsWarehousingEntryCollect','930','450')" />
+								</form>
+								</td>
+								
+								<td>
+								<form>
+									<input type="submit" value="明细" onclick="openFormWin('transferToDetEntryCollectDetail.jsp'+'?id=<s:property value="#entryCollect.id" />','detailsWarehousingEntryCollectDetail','930','450')" />
 								</form>
 								</td>
 						</tr>

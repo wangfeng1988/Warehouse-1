@@ -17,28 +17,32 @@ response.setHeader("Content-disposition","attachment; filename=entryCollect.xls"
 <body class="browserscripting">
 
 	<table id="details">
-					<tr>
-						<td><s:property value="entryCollect_detials.maked_year_month" /></td><td>收货入库单汇总</td>
-					</tr>
-					
-					<tr>
-						<th>序号</th>
-						<th>供应商</th>
-						<th>合计金额</th>
-						<th>备注</th>
-					</tr>
-					<s:iterator value="entryCollect_detials.entrys" id="entry" status="index">
-						<tr>
-							<td><s:property value="#index.index" /></td>
-							<td><s:property value="#entry.supplier" /></td>
-							<td><s:property value="#entry.total_money" /></td>
-							<td><s:property value="#entry.remark" /></td>
-						</tr>
-					</s:iterator>
-					
-					<tr>
-						<td>合计金额:</td><td><s:property value="entryCollect_detials.total_money" /></td>
-					</tr>
+		<tr>
+			<td><s:property value="entryCollect_details.maked_year_month" /></td>
+			<td>收货入库单汇总</td>
+		</tr>
+
+		<tr>
+			<th>序号</th>
+			<th>供应商</th>
+			<th>合计金额</th>
+			<th>备注</th>
+		</tr>
+
+		<s:iterator value="entryCollect_details.entrysdetail" id="detail"
+			status="index">
+			<tr>
+				<td><s:property value="#index.index" /></td>
+				<td><s:property value="#detail.supplier" /></td>
+				<td><s:property value="#detail.total_money" /></td>
+				<td><s:property value="#detail.remark" /></td>
+			</tr>
+		</s:iterator>
+
+		<tr>
+			<td>合计金额:</td>
+			<td><s:property value="entryCollect_details.total_money" /></td>
+		</tr>
 	</table>
 
 </body>

@@ -2,17 +2,11 @@ package com.ssh.jutem.edit.service;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
-import com.ssh.jutem.assist.model.SupplierOfEntry;
 import com.ssh.jutem.edit.dao.IWarehousingEntryCollectDao;
-import com.ssh.jutem.edit.model.WarehousingEntry;
 import com.ssh.jutem.edit.model.WarehousingEntryCollect;
 
 public class WarehousingEntryCollectServiceImp implements IWarehousingEntryCollectService 
@@ -45,45 +39,10 @@ public class WarehousingEntryCollectServiceImp implements IWarehousingEntryColle
 
 	@Override
 	/*因为用了延迟加载所以这里不用缓存里的数据*/
-	public Map<String,Object> selectDetial(int id) 
+	public WarehousingEntryCollect selectDetial(int id) 
 	{	
-		/*System.out.println("this is selectDetial service");
-		
-		WarehousingEntryCollect mycollect=(WarehousingEntryCollect) entryCollectDao.selectById(id);
-		Set<SupplierOfEntry> soes=new HashSet<SupplierOfEntry>();
-		
-		Map<String,Object> result=new HashMap<String,Object>();
-		
-		将entry根据供应商supplier进行归类
-		for(Object e:mycollect.getEntrys())
-		{
-			WarehousingEntry entry=(WarehousingEntry) e;
-			int tag=0;
-			for(SupplierOfEntry soe:soes)
-			{
-				if(soe.getSupplier().equals(entry.getSupplier()))
-				{
-					soe.getEntrys().add(entry);
-					soe.setTotal_money(soe.getTotal_money()+entry.getTotal_money());
-					break;
-				}
-				tag++;
-			}
-			if(tag==soes.size())
-			{
-				SupplierOfEntry soe=new SupplierOfEntry();
-				soe.setSupplier(entry.getSupplier());
-				soe.setTotal_money(entry.getTotal_money());
-				soe.getEntrys().add(entry);
-				soes.add(soe);
-			}
-		}
-
-		result.put("Collect", mycollect);
-		result.put("SupplierOfEntry", soes);
-		
-		return result;*/
-		return null;
+		System.out.println("this is selectDetial service");
+		return (WarehousingEntryCollect) entryCollectDao.selectById(id);
 	}
 	
 	private List<?> selectAll() 

@@ -8,7 +8,6 @@ body {
 	font-size: 12px;
 }
 
-/* ----------------------------------- layout ----------------------------------- */
 html {
 	min-width: 966px;
 	background: #f9f9f9;
@@ -16,68 +15,60 @@ html {
 	overflow-x: hidden;
 }
 
-body {
-	text-align: center;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: #f9f9f9 url(/ui/holder.gif) top center repeat-y;
-}
+/* ----------------------------------- wrapper -----------------------------------*/
 
-div#wrapper {
-	margin: 0 auto;
-	padding: 0;
-	border: 0;
-	width: 1129px;
-	text-align: left;
-	background: transparent url(/ui/wrapper.gif) top left repeat-y;
-}
-
-div#navsecond {
-	float: left;
-	margin: 0 0 0 6px;
-	padding: 0;
-	border: 0;
-	width: 180px;
-	background: transparent;
-}
-
-html>body div#navsecond {
-	margin-left: 12px;
-}
-
-div#maincontent {
-	float: left;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	width: 900px;
-	background: transparent;
+div#wrapper
+{
+	border: 5px solid;
+	width:auto;
+	height:auto;
 }
 
 /* ----------------------------------- navfirst -----------------------------------*/
-div#navfirst {
+div#navfirst 
+{
 	height: 55px;
-	width: 1100px;
-	margin: 0 0 0 12px;
 	padding: 0;
-	border: 0;
-	background: #fff;
+	border: 1px solid;
+	width: auto;
+}
+
+/* ----------------------------------- navsecond -----------------------------------*/
+div#navsecond 
+{
+	float: left;
+	padding: 0;
+	border: 1px solid;
+	height: 600px;
+	width: auto;
+}
+
+/* ----------------------------------- maincontent-----------------------------------*/
+div#maincontent 
+{
+	float: left;
+	margin: 0;
+	border: 1px solid;
+	height: 600px;
+	width: auto;
+}
+
+/* ----------------------------------- footer-----------------------------------*/
+div#footer 
+{
+	clear: both;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: 46px;
+	background: #b6b6b6;
 }
 
 /* ----------------------------------- Typography ----------------------------------- */
-div#maincontent ul {
-	margin-top: 10px;
-	margin-left: 35px;
-	margin-bottom: 0;
-}
 
-div#maincontent li {
-	margin-top: 3px;
-}
 
-div#maincontent	div {
-	width: 800px;
+div#maincontent	div#header {
+	width: auto;
 	margin: 0 0 0 15px;
 	padding: 20px 0 20px 0;
 	border: 0;
@@ -86,8 +77,8 @@ div#maincontent	div {
 }
 
 /* ----------------------------------- 导航折叠菜单----------------------------------- */
-.navlist {
-	margin: 50px auto;
+.navlist 
+{
 	width: 180px;
 	height: auto;
 }
@@ -171,74 +162,27 @@ div#maincontent	div {
 	background-image: url(image/arrow-u.png);
 }
 
-/* ----------------------------------- 表格----------------------------------- */
-.select_result {
-	width: 800px;
+/* ----------------------------------- 表格滚动----------------------------------- */
+#table_head
+{
+	width: 900px;	
 	padding: 0;
 	margin: 0;
 }
 
-.select_result input[type=text] {
-	border-style: none;
+#table_result
+{
+	width: 910px;
+	height: 400px;
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	overflow-x: hidden;
 }
 
-caption {
-	padding: 0 0 5px 0;
-	width: 700px;
-	font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	text-align: right;
-}
-
-th {
-	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	color: #4f6b72;
-	border-right: 1px solid #C1DAD7;
-	border-bottom: 1px solid #C1DAD7;
-	border-top: 1px solid #C1DAD7;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	text-align: left;
-	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(image/bg_header.jpg) no-repeat;
-}
-
-th.nobg {
-	border-top: 0;
-	border-left: 0;
-	border-right: 1px solid #C1DAD7;
-	background: none;
-}
-
-td {
-	border-right: 1px solid #C1DAD7;
-	border-bottom: 1px solid #C1DAD7;
-	background: #fff;
-	padding: 6px 6px 6px 12px;
-	color: #4f6b72;
-}
-
-td input {
-	width: 50px;
-}
-
-td.alt {
-	background: #F5FAFA;
-	color: #797268;
-}
-
-th.spec {
-	border-left: 1px solid #C1DAD7;
-	border-top: 0;
-	background: #fff url(image/bullet1.gif) no-repeat;
-	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-}
-
-th.specalt {
-	border-left: 1px solid #C1DAD7;
-	border-top: 0;
-	background: #f5fafa url(image/bullet2.gif) no-repeat;
-	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	color: #797268;
+#table_result table,#table_head table
+{
+	table-layout: fixed;
 }
 
 /* ----------------------------------- 导航列表----------------------------------- */
@@ -249,7 +193,7 @@ ul.ul_nav {
 	overflow: hidden;
 }
 
-div#head li {
+div#header li {
 	float: right;
 }
 

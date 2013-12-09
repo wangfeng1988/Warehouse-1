@@ -58,7 +58,7 @@ public class WarehousingEntryDaoImp implements IWarehousingEntryDao {
 	
 	@SuppressWarnings("resource")
 	@Override
-	/*这个方法为task服务，task似乎不能使用spring注入session*/
+	/*这个方法为task(Timmer)服务，task似乎不能使用spring注入session*/
 	public List<?> selectByYearMonth(String year_month) 
 	{
 		System.out.println("This is select by year month");

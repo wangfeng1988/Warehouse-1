@@ -74,9 +74,9 @@ public class WarehousingEntryAction extends ActionSupport
 		System.out.println(id);
 		System.out.println(isExcel);
 		
-		entry_detials=entryService.selectDetial(id);
+		entry_details=entryService.selectDetial(id);
 		
-		System.out.println(entry_detials.toString());
+		System.out.println(entry_details.toString());
 		
 		if(isExcel==1)
 			return "excel";
@@ -127,16 +127,15 @@ public class WarehousingEntryAction extends ActionSupport
 	public void setId(int id) {
 		this.id = id;
 	}
-	public WarehousingEntry getEntry_detials() {
-		return entry_detials;
+	public WarehousingEntry getEntry_details() {
+		return entry_details;
 	}
-	public void setEntry_detials(WarehousingEntry entry_detials) {
-		this.entry_detials = entry_detials;
+	public void setEntry_details(WarehousingEntry entry_details) {
+		this.entry_details = entry_details;
 	}
 	public int getIsExcel() {
 		return isExcel;
 	}
-
 	public void setIsExcel(int isExcel) {
 		this.isExcel = isExcel;
 	}
@@ -152,7 +151,7 @@ public class WarehousingEntryAction extends ActionSupport
 	
 	/*查询详情*/
 	private int id;
-	private WarehousingEntry entry_detials;
+	private WarehousingEntry entry_details;
 	/*excel*/
 	private int isExcel=0; //可改成boolean，strutsBean赋值
 	

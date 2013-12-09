@@ -2,12 +2,10 @@ package com.ssh.jutem.edit.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.ssh.jutem.assist.model.SupplierOfEntry;
 import com.ssh.jutem.edit.model.WarehousingEntryCollect;
 import com.ssh.jutem.edit.service.IWarehousingEntryCollectService;
 
@@ -33,23 +31,30 @@ public class WarehousingEntryCollectAction extends ActionSupport
 		return SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String selectDetails() throws Exception
 	{
 		System.out.println("this is select entry collect details");
 		System.out.println(id);
-		System.out.println(isExcel);
+		System.out.println(tag);
 		
-		entryCollect_detials=(WarehousingEntryCollect) entryCollectService.selectDetial(id).get("Collect");
-		supplier_of_entrys=(Set<SupplierOfEntry>) entryCollectService.selectDetial(id).get("SupplierOfEntry");
+		entryCollect_details=entryCollectService.selectDetial(id);
 		
-		System.out.println(entryCollect_detials.toString());
-		System.out.println(supplier_of_entrys.toString());
+		System.out.println(entryCollect_details.toString());
 		
-		if(isExcel==1)
-			return "excel";
-		else
+		/*标志0-3,分别为，汇总详情，制作汇总详情excel，明细，制作明细详情excel*/
+		switch(tag)
+		{
+		case 0:
 			return SUCCESS;
+		case 1:
+			return "excel";
+		case 2:
+			return "detail";
+		case 3:
+			return "detail_excel";
+		default:
+			return null;
+		}
 	}
 	
 	/*get(),set()*/
@@ -77,11 +82,11 @@ public class WarehousingEntryCollectAction extends ActionSupport
 	public void setId(int id) {
 		this.id = id;
 	}
-	public WarehousingEntryCollect getEntryCollect_detials() {
-		return entryCollect_detials;
+	public WarehousingEntryCollect getEntryCollect_details() {
+		return entryCollect_details;
 	}
-	public void setEntryCollect_detials(WarehousingEntryCollect entryCollect_detials) {
-		this.entryCollect_detials = entryCollect_detials;
+	public void setEntryCollect_details(WarehousingEntryCollect entryCollect_details) {
+		this.entryCollect_details = entryCollect_details;
 	}
 	public IWarehousingEntryCollectService getEntryCollectService() {
 		return entryCollectService;
@@ -90,22 +95,17 @@ public class WarehousingEntryCollectAction extends ActionSupport
 			IWarehousingEntryCollectService entryCollectService) {
 		this.entryCollectService = entryCollectService;
 	}
-	public int getIsExcel() {
-		return isExcel;
+	public int getTag() {
+		return tag;
 	}
-	public void setIsExcel(int isExcel) {
-		this.isExcel = isExcel;
-	}
-	public Set<SupplierOfEntry> getSupplier_of_entrys() {
-		return supplier_of_entrys;
-	}
-	public void setSupplier_of_entrys(Set<SupplierOfEntry> supplier_of_entrys) {
-		this.supplier_of_entrys = supplier_of_entrys;
+
+	public void setTag(int tag) {
+		this.tag = tag;
 	}
 
 /*	private WarehousingEntryCollect entryCollectBean;
 	private List<WarehousingEntry> entryBeans;*/
-	
+
 	/*查询*/
 	private String searchKey;
 	private String searchType;
@@ -114,13 +114,10 @@ public class WarehousingEntryCollectAction extends ActionSupport
 	
 	/*查询详情*/
 	private int id;
-	private WarehousingEntryCollect entryCollect_detials;
+	private WarehousingEntryCollect entryCollect_details;
 	
-	/*查询明细,分类汇总*/
-	private Set<SupplierOfEntry> supplier_of_entrys;
-	
-	/*excel*/
-	private int isExcel=0; //可改成boolean，strutsBean赋值
+	/*查询跳转标志*/
+	private int tag=0;
 	
 	@Resource
 	private IWarehousingEntryCollectService entryCollectService; 

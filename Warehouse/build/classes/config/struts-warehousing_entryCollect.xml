@@ -14,6 +14,8 @@
 		
 		<action name="selectDetails_WarehousingEntryCollect" class="warehousingEntryCollectAction"
 			method="selectDetails">
+			<result name="detail">/detailsWarehousingEntryCollectDetail.jsp</result>
+			<result name="detail_excel">/makeExcelEntryCollectDetail.jsp</result>
 			<result name="excel">/makeExcelEntryCollect.jsp</result>
 			<result name="success">/detailsWarehousingEntryCollect.jsp</result>
 		</action>
