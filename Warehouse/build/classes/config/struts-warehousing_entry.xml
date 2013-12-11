@@ -19,8 +19,8 @@
 
 		<action name="select_WarehousingEntry" class="warehousingEntryAction"
 			method="select">
-			<result name="input">/selectWarehousingEntry.jsp</result>
-			<result name="success">/selectWarehousingEntry.jsp</result>
+			<result name="input">/WarehousingEntry.jsp</result>
+			<result name="success">/WarehousingEntry.jsp</result>
 		</action>
 		
 		<action name="selectDetails_WarehousingEntry" class="warehousingEntryAction"

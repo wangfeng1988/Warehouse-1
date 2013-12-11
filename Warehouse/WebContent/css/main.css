@@ -30,6 +30,13 @@ html
 	overflow-x: hidden;
 }
 
+input[type=text]
+{
+	margin:5px 0;
+	background: none repeat scroll 0% 0% rgb(247, 247, 247);
+	border: 1px solid rgb(204, 204, 204);
+}
+
 /* ----------------------------------- wrapper -----------------------------------*/
 div#wrapper
 {
@@ -37,8 +44,8 @@ div#wrapper
 	height:auto;
 }
 
-/* ----------------------------------- navfirst -----------------------------------*/
-div#navfirst 
+/* ----------------------------------- head -----------------------------------*/
+div#head
 {
 	width: auto;
 	height: 200px;
@@ -96,13 +103,13 @@ ul#welcome li a
     background: url("image/menu_line.gif") repeat-y scroll 0% 0% transparent;
     color: rgb(185, 168, 148);
 }
-/* ----------------------------------- navsecond -----------------------------------*/
-div#navsecond 
+/* ----------------------------------- nav -----------------------------------*/
+div#navleft
 {
 	float: left;
 	padding: 0;
-	height: 600px;
 	width: 200px;
+	position:absolute;
 	background:url("image/bg_left.gif") repeat-y scroll 0% 0% rgb(255, 255, 255);
 }
 
@@ -149,13 +156,13 @@ div#maincontent
 {
 	float: left;
 	margin: 0;
-	padding-left: 30px;
-	height: 600px;
+	padding-left: 230px;
 	width: 800px;
+	background:url("image/bg_left.gif") repeat-y scroll 0% 0% rgb(255, 255, 255);
 }
 
 /*表内导航*/
-div#navthird
+div#navtop
 {
 	position: relative;
 	left: -30px;
@@ -163,8 +170,7 @@ div#navthird
 	z-index: 10;
 }
 
-
-ul.navform li a
+ul#navform li a
 {
 	display: block;
 	margin: 0px 5px;
@@ -175,31 +181,61 @@ ul.navform li a
 	background: url("image/tab_inactive_right.png") no-repeat scroll right top transparent;
 }
 
-ul.navform li
+ul#navform li
 {
 	background: url("image/tab_inactive_left.png") no-repeat scroll left top transparent;
 }
 
-ul.navform li a:hover 
+ul#navform li a:hover 
 {
     color: rgb(236, 224, 210);
 }
 
-li#navactive a
+ul#navform li#navactive a
 {
 	color: rgb(51, 51, 51);
 	background: url("image/tab_active_right.png") no-repeat scroll right top transparent;
 }
 
-li#navactive
+ul#navform li#navactive
 {
 	background: url("image/tab_active_left.png") no-repeat scroll left top transparent;
 }
 
 /*内容布局*/
-div#search_information
+div#content_head
 {
-	margin-top: 10px;
+	margin: 20px 0;
+}
+/*表格*/
+#content_table
+{
+	border: 1px solid rgb(184, 198, 210);
+}
+#content_table input[type=text]
+{
+	width: 65px;
+}
+
+th.first
+{
+	border-left: 0;
+}
+
+th.short,td.short
+{
+	width:30px;
+}
+
+/*显示和隐藏*/
+div.tabhidden
+{
+	display: none;
+}
+
+div.tabactive
+{
+	display: inline;
 }
 
 /* ----------------------------------- footer-----------------------------------*/
@@ -212,6 +248,8 @@ div#footer
 	height: 46px;
 	background: #b6b6b6;
 }
+
+
 
 
 /* ----------------------------------- Typography ----------------------------------- */
@@ -228,10 +266,7 @@ div#maincontent	div#header
 }
 
 /* ----------------------------------- 表格----------------------------------- */
-#search_table
-{
-	border: 1px solid rgb(184, 198, 210);
-}
+
 
 #table_head
 {
@@ -239,39 +274,54 @@ div#maincontent	div#header
 	padding: 0;
 	margin: 0;
 }
-
-th.first
-{
-	width: 30px;
-}
-
-#table_result
+#table_body
 {
 	width: 813px;
 	height: 400px;
 	padding: 0;
 	margin: 0;
-	overflow: auto;
+	overflow: scroll;
 	overflow-x: hidden;
 }
 
-#table_result table,#table_head table
+
+#table_body table,#table_head table
 {
 	table-layout: fixed;
 }
 
+div#table_body table
+{
+	border-bottom:1px solid rgb(182, 198, 210);
+}
+
 /* ----------------------------------- 导航列表----------------------------------- */
-ul.ul_nav,ul.navform {
+ul.ul_nav,ul#navform,.content_foot_button li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
 
-div#header li {
+div#header li ,.content_foot_button li{
 	float: right;
 }
 
-div#search_information li,#form_information  li,div#material_information li,ul.navform li{
+ul.content_foot_button
+{
+	float:right;
+}
+
+div#content_head li,#form_information  li,div#material_information li,ul#navform li,ul.ul_nav li{
 	float: left;
+}
+
+div#content_head li
+{
+	margin-right: 10px;
+}
+
+ul.content_foot_ul
+{
+	margin:10px 0;
 }

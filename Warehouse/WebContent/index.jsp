@@ -18,7 +18,7 @@
 
 <p><a href="deleteWarehousingEntry.jsp">delete entry</a> for our prize drawing.</p>
 
-<p><a href="selectWarehousingEntry.jsp">select all entry</a> for our prize drawing.</p>
+<p><a href="WarehousingEntry.jsp">select all entry</a> for our prize drawing.</p>
 
 <p><a href="BetteraddWarehousingEntry.jsp">test</a> for our prize drawing.</p>
 

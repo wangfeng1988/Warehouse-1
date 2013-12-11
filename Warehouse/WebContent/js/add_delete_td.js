@@ -8,7 +8,7 @@ function AddRow()
  // 添加一行
  var table=document.getElementById("material"); 
  // 除标题外的行数
- var rows=table.rows.length-1; 
+ var rows=table.rows.length; 
 
  var newTr = table.insertRow();
  // 添加列
@@ -24,7 +24,7 @@ function AddRow()
  var newTd9 = newTr.insertCell();
 
  // 设置列内容和属性
- newTd0.innerHTML = '<input type=checkbox id="box1" />';
+ newTd0.innerHTML = '<input class="short" type=checkbox id="box1" />';
  newTd1.innerHTML = '<input type="text" name="materialBeans['+rows+'].coding" />';
  newTd2.innerHTML = '<input type="text" name="materialBeans['+rows+'].name" />';
  newTd3.innerHTML = '<input type="text" name="materialBeans['+rows+'].specification" />';
@@ -65,7 +65,7 @@ function DelRow()
      {
        if(cheCou[i].checked==true)
        {
-        table.deleteRow(i+1);
+        table.deleteRow(i);
        }
      }
    }
@@ -77,7 +77,7 @@ function DelRow()
       {
         if(cheCou[i].checked==true)
         {
-         table.deleteRow(i+1);
+         table.deleteRow(i);
          break;
         }
       }
