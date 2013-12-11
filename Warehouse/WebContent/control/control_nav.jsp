@@ -7,42 +7,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="navlist" STYLE="border-style: solid; border-width: 1pt;">
-		<ul class="menu-one">
-			<li class="firstChild">
-				<div class="header">
-					<span class="txt">一、仓库管理</span> <span class="arrow"></span>
-				</div>
-				<ul class="menu-two">
-					<li class="firstChild"><a href="selectWarehousingEntry.jsp">收货入库单</a></li>
-					<li><a href="selectMaterialsRequisition.jsp">领料出库单</a></li>
-					<li><a href="selectDeliveryOrder.jsp">销售出库单</a></li>
-					<li><a href="selectMaterial.jsp">仓库货品</a></li>
-				</ul>
-			</li>
-			<li>
-				<div class="header">
-					<span class="txt">二、权限管理</span> <span class="arrow"></span>
-				</div>
-				<ul class="menu-two">
-					<li class="firstChild"><a href="#">CSS3基础教程01</a></li>
-					<li><a href="#">CSS3基础教程02</a></li>
-					<li><a href="#">CSS3基础教程03</a></li>
-					<li><a href="#">CSS3基础教程04</a></li>
-				</ul>
-			</li>
-			<li>
-				<div class="header">
-					<span class="txt">二、XX管理</span> <span class="arrow"></span>
-				</div>
-				<ul class="menu-two">
-					<li class="firstChild"><a href="#">CSS3基础教程01</a></li>
-					<li><a href="#">CSS3基础教程02</a></li>
-					<li><a href="#">CSS3基础教程03</a></li>
-					<li><a href="#">CSS3基础教程04</a></li>
-				</ul>
-			</li>
-		</ul>
+	<div id="navlist">
+		<div class="navsection">
+			<h4 id="navhead">仓库管理</h4>
+			<ul class="menu-one">
+				<li id="selected"><a href="selectWarehousingEntry.jsp">收货入库单</a></li>
+				<li><a href="selectMaterialsRequisition.jsp">领料出库单</a></li>
+				<li><a href="selectDeliveryOrder.jsp">销售出库单</a></li>
+				<li><a href="selectMaterial.jsp">仓库货品</a></li>
+			</ul>
+		</div>
+
+		<div class="navsection">
+			<h4 id="navhead">权限管理</h4>
+			<ul>
+				<li><a href="#">CSS3基础教程01</a></li>
+				<li><a href="#">CSS3基础教程02</a></li>
+				<li><a href="#">CSS3基础教程03</a></li>
+				<li><a href="#">CSS3基础教程04</a></li>
+			</ul>
+		</div>
+
+		<div class="navsection">
+			<h4 id="navhead">XX管理</h4>
+			<ul>
+				<li><a href="#">CSS3基础教程01</a></li>
+				<li><a href="#">CSS3基础教程02</a></li>
+				<li><a href="#">CSS3基础教程03</a></li>
+				<li><a href="#">CSS3基础教程04</a></li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

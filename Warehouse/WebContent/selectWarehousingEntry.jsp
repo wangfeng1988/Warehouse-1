@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="css/tablecloth.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<title>临时页面</title>
+<title>查询收货入库单</title>
 
 </head>
 
@@ -25,7 +25,15 @@
 	<div id="wrapper">
 
 		<div id="navfirst">
-
+			<div id="logo">
+				<h1>邮政部门商品管理系统</h1>	
+				<h4>winter is coming</h4>
+				<ul id="welcome">	
+					<li><a href="#">设置</a></li>
+					<li><a href="#">登出</a></li>
+					<li>欢迎</li>
+				</ul>
+			</div>
 		</div>
 
 		<div id="navsecond">
@@ -33,17 +41,16 @@
 		</div>
 
 		<div id="maincontent" >
-		
-			<div id="header">
-				<h1>查询收货入库单</h1>
-				<ul class="ul_nav">
-					<li id="help"><button class="funcation">帮助</button></li>
-					<li id="select"><button class="funcation">查询</button></li>
-					<li id="modify"><button class="funcation">修改</button></li>
-					<li id="collect"><button class="funcation" onclick="location.href='selectWarehousingEntryCollect.jsp';">汇总</button></li>
-					<li id="add"><button class="funcation" onclick="openFormWin('addWarehousingEntry.jsp','addWarehousingEntry','930','450')">增加</button></li>
-				</ul>							
+			<div id="navthird">
+				<ul class="navform">
+					<li id="navactive"><a href="#" title="查询表单">查询表单</a></li>
+					<li><a href="#" title="增加表单">增加表单</a></li>
+					<li><a href="#" title="汇总查询">汇总查询</a></li>
+					<li><a href="#" title="帮助查询">帮助查询</a></li>
+				</ul>
 			</div>
+			
+			<h1>查询收货入库单</h1>						
 
 			<div id="search_information">
 				<form action="select_WarehousingEntry" method="post">
@@ -64,45 +71,48 @@
 					</ul>
 				</form>				
 			</div>
-			
-			<div id="table_head">
-				<table>
-					<tr>
-						<th>序号</th>
-						<th>制单日期</th>
-						<th>单据号码</th>
-						<th>原始单号</th>
-						<th>进货仓库</th>
-						<th>供应商</th>
-						<th>合计数量</th>
-						<th>合计金额</th>
-						<th>详情</th>
-					</tr>
-				</table>				
-			</div>
-			
-			<div id="table_result">
-				<table>
-					<s:iterator value="result" id="entry" status="index">
+
+			<div id="search_table">
+				<div id="table_head">
+					<table>
 						<tr>
-							<th class="spec"><s:property value="#index.index" /></th>
-							<td><s:property value="#entry.prepared_by_date" /></td>
-							<td><s:property value="#entry.document_number" /></td>
-							<td><s:property value="#entry.original_invoice_number" /></td>
-							<td><s:property value="#entry.shipping_warehouse" /></td>
-							<td><s:property value="#entry.supplier" /></td>
-							<td><s:property value="#entry.total_number" /></td>
-							<td><s:property value="#entry.total_money" /></td>
-							<td>
-								<form>
-									<input type="submit" value="详情"
-										onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
-								</form>
-							</td>
+							<!-- <th class="first">序号</th> -->
+							<th>制单日期</th>
+							<th>单据号码</th>
+							<th>原始单号</th>
+							<th>进货仓库</th>
+							<th>供应商</th>
+							<th>合计数量</th>
+							<th>合计金额</th>
+							<th>详情</th>
 						</tr>
-					</s:iterator>
-				</table>
-			</div>			
+					</table>
+				</div>
+
+				<div id="table_result">
+					<table>
+						<s:iterator value="result" id="entry" status="index">
+							<tr>
+								<%-- <th class="first"><s:property value="#index.index" /></th> --%>
+								<td><s:property value="#entry.prepared_by_date" /></td>
+								<td><s:property value="#entry.document_number" /></td>
+								<td><s:property value="#entry.original_invoice_number" /></td>
+								<td><s:property value="#entry.shipping_warehouse" /></td>
+								<td><s:property value="#entry.supplier" /></td>
+								<td><s:property value="#entry.total_number" /></td>
+								<td><s:property value="#entry.total_money" /></td>
+								<td>
+									<form>
+										<input type="submit" value="详情"
+											onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
+									</form>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
+				</div>
+			</div>
+
 		</div>
 		
 		<div id="footer">
