@@ -4,12 +4,13 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="entryCollectActions" extends="struts-default">
+	<package name="entryCollectActions" extends="struts-default,json-default">
 
 		<action name="select_WarehousingEntryCollect" class="warehousingEntryCollectAction"
 			method="select">
-			<result name="input">/selectWarehousingEntryCollect.jsp</result>
-			<result name="success">/selectWarehousingEntryCollect.jsp</result>
+			<result type="json">
+	                <param name="root">result</param>
+	        </result>
 		</action>
 		
 		<action name="selectDetails_WarehousingEntryCollect" class="warehousingEntryCollectAction"
@@ -18,6 +19,7 @@
 			<result name="detail_excel">/makeExcelEntryCollectDetail.jsp</result>
 			<result name="excel">/makeExcelEntryCollect.jsp</result>
 			<result name="success">/detailsWarehousingEntryCollect.jsp</result>
+
 		</action>
 				
 	</package>

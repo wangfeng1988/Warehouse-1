@@ -33,9 +33,10 @@
 		</div>
 
 		<div id="maincontent" >
-			<jsp:include page="navtop.jsp" />
+			<jsp:include page="navtopOfEntry.jsp" />
 			<jsp:include page="selectWarehousingEntry.jsp" />
 			<jsp:include page="addWarehousingEntry.jsp" />
+			<jsp:include page="selectWarehousingEntryCollect.jsp" />
 		</div>
 		
 		<div id="footer">
@@ -44,3 +45,4 @@
 	
 </body>
 </html>
+

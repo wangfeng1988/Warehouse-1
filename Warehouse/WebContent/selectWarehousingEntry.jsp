@@ -25,7 +25,7 @@
 							<option value="供应商">供应商</option>
 					</select>
 					</li>
-					<li><input class="button" type="submit" value="搜索" /></li>
+					<li><input type="submit" value="搜索" /></li>
 				</ul>
 			</form>
 		</div>
