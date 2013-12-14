@@ -9,8 +9,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/tablecloth.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/tablecloth.css" />
 
 <title>临时页面</title>
 
@@ -20,17 +21,17 @@
 
 	<div id="wrapper">
 	
-		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
-			<h1>入库单详情</h1>
-			<table id="details">
+		<div>
+			<h1>收货入库单详情</h1>
+			<table>
 					<tr>
-						<td>制单日期：</td><td><s:property value="entry_detials.prepared_by_date" /></td>
-						<td>单据号码：</td><td><s:property value="entry_detials.document_number" /></td>
-						<td>原始单号：</td><td><s:property value="entry_detials.original_invoice_number" /></td>
+						<td>制单日期：</td><td><s:property value="entry_details.prepared_by_date" /></td>
+						<td>单据号码：</td><td><s:property value="entry_details.document_number" /></td>
+						<td>原始单号：</td><td><s:property value="entry_details.original_invoice_number" /></td>
 					</tr>
 					<tr>
-						<td>进货仓库：</td><td><s:property value="entry_detials.shipping_warehouse" /></td>
-						<td>供应商：</td><td><s:property value="entry_detials.supplier" /></td>
+						<td>进货仓库：</td><td><s:property value="entry_details.shipping_warehouse" /></td>
+						<td>供应商：</td><td><s:property value="entry_details.supplier" /></td>
 					</tr>
 					
 					<tr>
@@ -45,7 +46,7 @@
 						<th>入库价值</th>
 						<th>备注</th>
 					</tr>
-					<s:iterator value="entry_detials.materials" id="material" status="index">
+					<s:iterator value="entry_details.materials" id="material" status="index">
 						<tr>
 							<td><s:property value="#index.index" /></td>
 							<td><s:property value="#material.coding" /></td>
@@ -61,13 +62,13 @@
 					</s:iterator>
 					
 					<tr>
-						<td>合计金额:</td><td><s:property value="entry_detials.total_money" /></td>
-						<td>数量小计:</td><td><s:property value="entry_detials.total_number" /></td>
+						<td>合计金额:</td><td><s:property value="entry_details.total_money" /></td>
+						<td>数量小计:</td><td><s:property value="entry_details.total_number" /></td>
 					</tr>
 				</table>
 				
 				<form action="selectDetails_WarehousingEntry">
-					<input type="hidden" value=<s:property value="entry_detials.id"/> name="id"/>
+					<input type="hidden" value=<s:property value="entry_details.id"/> name="id"/>
 					<input type="hidden" value="1" name="isExcel" />
 					<input type="submit" value="导出EXCEL"/>
 				</form>

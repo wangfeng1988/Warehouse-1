@@ -14,10 +14,10 @@
 		<h1>查询收货入库单</h1>
 
 		<div id="content_head">
-			<form action="select_WarehousingEntry" method="post">
+			<form action="#" method="post">
 				<ul class="ul_nav">
-					<li>关键字:<input type="text" name="searchKey" /></li>
-					<li>搜索类型: <select name="searchType">
+					<li>关键字:<input type="text" name="EntrysearchKey" /></li>
+					<li>搜索类型: <select name="EntrysearchType">
 							<option value="制单日期" selected="selected">制单日期</option>
 							<option value="单据号码">单据号码</option>
 							<option value="原始单号">原始单号</option>
@@ -25,7 +25,7 @@
 							<option value="供应商">供应商</option>
 					</select>
 					</li>
-					<li><input type="submit" value="搜索" /></li>
+					<li><input type="button" value="搜索" class="search_entry" /></li>
 				</ul>
 			</form>
 		</div>
@@ -47,28 +47,58 @@
 			</div>
 
 			<div id="table_body">
-				<table>
-					<s:iterator value="result" id="entry" status="index">
-						<tr>
-							<td><s:property value="#entry.prepared_by_date" /></td>
-							<td><s:property value="#entry.document_number" /></td>
-							<td><s:property value="#entry.original_invoice_number" /></td>
-							<td><s:property value="#entry.shipping_warehouse" /></td>
-							<td><s:property value="#entry.supplier" /></td>
-							<td><s:property value="#entry.total_number" /></td>
-							<td><s:property value="#entry.total_money" /></td>
-							<td>
-								<form>
-									<input class="button" type="submit" value="详情"
-										onclick="openFormWin('transferToDetEntry.jsp'+'?id=<s:property value="#entry.id" />','detailsWarehousingEntry','930','450')" />
-								</form>
-							</td>
-						</tr>
-					</s:iterator>
+				<table id="entry_table">
+				
 				</table>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		/* 提交结果，执行ajax */
+		function btn_entry() {
+
+			var $btn = $("input.search_entry");
+			$btn.bind("click", function() {
+					
+				$.ajax({
+					type : "post",
+					url : "select_WarehousingEntry",
+					data : 
+					{
+						searchKey : $("input[name=EntrysearchKey]").val(),
+						searchType : $("select[name=EntrysearchType]").val() 
+					},
+					dataType : "json",
+					success : function(data) {
+						var d = eval("(" + data + ")");
+						
+						$("#entry_table").empty();
+						
+						$.each(d,function(i,result)
+						{
+							$.each(result,function(j,item)
+							{
+								var row="<tr><td>"+item['prepared_by_date']+"</td>"+"<td>"+item['document_number']+"</td>"+
+								"<td>"+item['original_invoice_number']+"</td>"+"<td>"+item['shipping_warehouse']+"</td>"+
+								"<td>"+item['supplier']+"</td>"+"<td>"+item['total_number']+"</td>"+"<td>"+item['total_money']+"</td>"+
+								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntry.jsp?id="+item["id"]+"','detailsWarehousing','930','450') /></td>"+
+								"</tr>";
+								
+								$("#entry_table").append(row);
+							});			
+						});
+					},
+ 					error : function() {
+						alert("系统异常，请稍后重试！");
+					}
+				});
+				
+				return false;
+			});
+		}
+
+	</script>
 
 </body>
 </html>

@@ -14,7 +14,6 @@
 		<h1>查询收货入库单汇总</h1>
 		
 		<div id="content_head">
-			<!-- "select_WarehousingEntryCollect" -->
 			<form action="#" method="post">
 				<ul class="ul_nav">
 					<li>关键字:<input type="text" name="CollectsearchKey" /></li>
@@ -40,42 +39,19 @@
 			</div>
 			
 			<div id="table_body">
-				<table>
-					<s:iterator value="result" id="entryCollect" status="index">
-						<tr>
-							<td><s:property value="#entryCollect.maked_year_month" /></td>
-							<td><s:property value="#entryCollect.total_money" /></td>
-							<td>
-								<form>
-									<input type="submit" value="详情"
-										onclick="openFormWin('transferToDetEntryCollect.jsp'+'?id=<s:property value="#entryCollect.id" />','detailsWarehousingEntryCollect','930','450')" />
-								</form>
-							</td>
+				<table id="collect_table">
 
-							<td>
-								<form>
-									<input type="submit" value="明细"
-										onclick="openFormWin('transferToDetEntryCollectDetail.jsp'+'?id=<s:property value="#entryCollect.id" />','detailsWarehousingEntryCollectDetail','930','450')" />
-								</form>
-							</td>
-						</tr>
-					</s:iterator>
 				</table>
 			</div>			
 		</div>
-		
-		<input type="text" id="test" />
 	</div>
 
 	<script type="text/javascript">
 		/* 提交结果，执行ajax */
-		function btn() {
+		function btn_collect() {
 
 			var $btn = $("input.search_collect");
 			$btn.bind("click", function() {
-				
-				alert($("input[name=CollectsearchKey]").val());
-				alert($("select[name=CollectsearchType]").val());
 						
 				$.ajax({
 					type : "post",
@@ -89,14 +65,20 @@
 					success : function(data) {
 						var d = eval("(" + data + ")");
 						
-						alert(""+d.result[0].id+"");
+						$("#collect_table").empty();
 						
-						/* $("#test").text(""+d.result+""); */
-						
-/* 						$("#s_name").text("" + d.name + "");
-						$("#s_age").text("" + d.age + "");
-						$("#s_position").text("" + d.position + ""); */
-
+						$.each(d,function(i,result)
+						{
+							$.each(result,function(j,item)
+							{
+								var row="<tr><td>"+item['maked_year_month']+"</td>"+"<td>"+item['total_money']+"</td>"+
+								"<td><form><input type='submit' value='详情' onclick='openFormWin('transferToDetEntryCollect.jsp'+'?id='"+item.id+",'detailsWarehousingEntryCollect','930','450')' /></form></td>"+
+								"<td><form><input type='submit' value='明细' onclick='openFormWin('transferToDetEntryCollectDetail.jsp'+'?id='"+item.id+",'detailsWarehousingEntryCollectDetail','930','450')' /></form></td>"+
+								"</tr>";
+								
+								$("#collect_table").append(row);
+							});
+						});
 					},
  					error : function() {
 						alert("系统异常，请稍后重试！");
@@ -106,11 +88,6 @@
 				return false;
 			});
 		}
-
-		/* 页面加载完成，绑定事件 */
-		$(document).ready(function() {
-			btn();
-		});
 	</script>
 	
 </body>

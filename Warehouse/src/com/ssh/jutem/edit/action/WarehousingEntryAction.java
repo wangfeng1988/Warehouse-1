@@ -1,16 +1,23 @@
 package com.ssh.jutem.edit.action;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ssh.jutem.edit.model.Material;
 import com.ssh.jutem.edit.model.WarehousingEntry;
 import com.ssh.jutem.edit.service.IWarehousingEntryService;
 
-public class WarehousingEntryAction extends ActionSupport
+public class WarehousingEntryAction extends ActionSupport implements ServletRequestAware
 {
 	public void validateAdd()
 	{
@@ -25,21 +32,38 @@ public class WarehousingEntryAction extends ActionSupport
 	}
 	
 	//由于点击详情会刷新搜索页面，这个时候存在BUG会使以下两项为空，所以验证防止出错（之后ajax修改)
-	public void validateSelect()
+/*	public void validateSelect()
 	{
 		if(searchKey==null || searchType==null)
 			addFieldError("search_error","请填写必要信息");
-	}
+	}*/
 	
 	public String add() throws Exception
 	{
-		System.out.println("this is warehousing entry action");	
-		System.out.println(entryBean.toString());
-		for(Material m:materialBeans)
-			System.out.println(m.toString());
-		
-		if(!entryService.add(entryBean,materialBeans))
-			System.out.println("spring success");
+		try
+		{
+			System.out.println("this is warehousing entry action");	
+			System.out.println(entryBean.toString());
+			for(Material m:materialBeans)
+				System.out.println(m.toString());
+			
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("result", "添加成功");
+			
+			JSONObject json=JSONObject.fromObject(map);
+			
+			result=json.toString();
+			
+			System.out.println(result);
+			
+			if(!entryService.add(entryBean,materialBeans))
+				System.out.println("spring success");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
 		return SUCCESS;
 	}
 	
@@ -58,13 +82,36 @@ public class WarehousingEntryAction extends ActionSupport
 	
 	public String select() throws Exception
 	{
-		System.out.println("this is select entry");
-		System.out.println(searchKey+"   "+searchType);
-		
-		result=entryService.select(searchKey, searchType);
-		
-		System.out.println(result);
-		
+		try
+		{
+			System.out.println("this is select entry");
+			
+			searchKey=request.getParameter("searchKey");
+			searchType=request.getParameter("searchType");
+			
+			System.out.println(searchKey+"   "+searchType);
+			
+			List<WarehousingEntry> entrys=entryService.select(searchKey, searchType);
+				
+			Map<String, List<WarehousingEntry>> map=new HashMap<String, List<WarehousingEntry>>();
+			
+			map.put("result", entrys);
+			
+			JsonConfig jsonConfig = new JsonConfig();
+	        String[] excludes = {"materials"}; 		
+	        jsonConfig.setExcludes(excludes);
+			
+			JSONObject json=JSONObject.fromObject(map,jsonConfig);
+				
+			result=json.toString();
+			
+			System.out.println(result);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			
 		return SUCCESS;
 	}
 	
@@ -109,10 +156,10 @@ public class WarehousingEntryAction extends ActionSupport
 	public void setSearchKey(String searchKey) {
 		this.searchKey = searchKey;
 	}
-	public List<WarehousingEntry> getResult() {
+	public String getResult() {
 		return result;
 	}
-	public void setResult(List<WarehousingEntry> result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 	public String getSearchType() {
@@ -139,6 +186,11 @@ public class WarehousingEntryAction extends ActionSupport
 	public void setIsExcel(int isExcel) {
 		this.isExcel = isExcel;
 	}
+	@Override
+	public void setServletRequest(HttpServletRequest arg0)
+	{
+		this.request=arg0;
+	}
 
 	private WarehousingEntry entryBean;
 	private List<Material> materialBeans;
@@ -147,7 +199,7 @@ public class WarehousingEntryAction extends ActionSupport
 	private String searchKey;
 	private String searchType;
 	
-	private List<WarehousingEntry> result=new ArrayList<WarehousingEntry>();
+	private String result;
 	
 	/*查询详情*/
 	private int id;
@@ -155,8 +207,11 @@ public class WarehousingEntryAction extends ActionSupport
 	/*excel*/
 	private int isExcel=0; //可改成boolean，strutsBean赋值
 	
+	private HttpServletRequest request;
+	
 	@Resource
 	private IWarehousingEntryService entryService; 
 	
 	private static final long serialVersionUID = 1L;
+
 }

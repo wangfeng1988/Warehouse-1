@@ -35,7 +35,6 @@ public class WarehousingEntryCollectAction extends ActionSupport implements Serv
 			searchKey=request.getParameter("searchKey");
 			searchType=request.getParameter("searchType");
 			
-			System.out.println("request get success");
 			System.out.println(searchKey+"   "+searchType);
 			
 			List<WarehousingEntryCollect> collects=entryCollectService.select(searchKey, searchType);

@@ -19,17 +19,17 @@ response.setHeader("Content-disposition","attachment; filename=entry.xls");
 	<table id="details">
 		<tr>
 			<td>制单日期：</td>
-			<td><s:property value="entry_detials.prepared_by_date" /></td>
+			<td><s:property value="entry_details.prepared_by_date" /></td>
 			<td>单据号码：</td>
-			<td><s:property value="entry_detials.document_number" /></td>
+			<td><s:property value="entry_details.document_number" /></td>
 			<td>原始单号：</td>
-			<td><s:property value="entry_detials.original_invoice_number" /></td>
+			<td><s:property value="entry_details.original_invoice_number" /></td>
 		</tr>
 		<tr>
 			<td>进货仓库：</td>
-			<td><s:property value="entry_detials.shipping_warehouse" /></td>
+			<td><s:property value="entry_details.shipping_warehouse" /></td>
 			<td>供应商：</td>
-			<td><s:property value="entry_detials.supplier" /></td>
+			<td><s:property value="entry_details.supplier" /></td>
 		</tr>
 
 		<tr>
@@ -43,7 +43,7 @@ response.setHeader("Content-disposition","attachment; filename=entry.xls");
 			<th>数量</th>
 			<th>入库价值</th>
 			<th>备注</th>
-			<s:iterator value="entry_detials.materials" id="material" status="index">
+			<s:iterator value="entry_details.materials" id="material" status="index">
 				<tr>
 					<td><s:property value="#index.index" /></td>
 					<td><s:property value="#material.coding" /></td>
@@ -59,9 +59,9 @@ response.setHeader("Content-disposition","attachment; filename=entry.xls");
 			</s:iterator>
 		<tr>
 			<td>合计金额:</td>
-			<td><s:property value="entry_detials.total_money" /></td>
+			<td><s:property value="entry_details.total_money" /></td>
 			<td>数量小计:</td>
-			<td><s:property value="entry_detials.total_number" /></td>
+			<td><s:property value="entry_details.total_number" /></td>
 		</tr>
 	</table>
 

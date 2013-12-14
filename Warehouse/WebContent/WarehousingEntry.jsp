@@ -14,6 +14,8 @@
 <script type="text/javascript" src="js/tablecloth.js"></script>
 <script type="text/javascript" src="js/add_delete_td.js"></script>
 <script type="text/javascript" src="js/switchPage.js"></script>
+<script type="text/javascript" src="js/prepared.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/tablecloth.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -22,7 +24,7 @@
 
 </head>
 
-<body class="browserscripting">
+<body class="browserscripting" onload="load()">
 	<div id="wrapper">
 		<div id="head">
 			<jsp:include page="head.jsp" />
@@ -43,6 +45,14 @@
 		</div>
 	</div>
 	
+	<script type="text/javascript">
+		$(document).ready(function() 
+		{
+			btn_entry();
+			btn_submit_entry();
+			btn_collect();		
+		});
+	</script>
 </body>
 </html>
 
