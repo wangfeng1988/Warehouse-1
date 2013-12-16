@@ -56,7 +56,7 @@
 	
 	<script type="text/javascript">
 		/* 提交结果，执行ajax */
-		function btn_entry() {
+		function btn_search_entry() {
 
 			var $btn = $("input.search_entry");
 			$btn.bind("click", function() {
@@ -82,12 +82,15 @@
 								var row="<tr><td>"+item['prepared_by_date']+"</td>"+"<td>"+item['document_number']+"</td>"+
 								"<td>"+item['original_invoice_number']+"</td>"+"<td>"+item['shipping_warehouse']+"</td>"+
 								"<td>"+item['supplier']+"</td>"+"<td>"+item['total_number']+"</td>"+"<td>"+item['total_money']+"</td>"+
-								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntry.jsp?id="+item["id"]+"','detailsWarehousing','930','450') /></td>"+
+								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntry.jsp?id="+item["id"]+"','detailsWarehousing','930','500') /></td>"+
 								"</tr>";
 								
 								$("#entry_table").append(row);
 							});			
 						});
+						/*重新加载tablecloth*/
+/* 						window.onload = tablecloth;
+						alert("hello"); */
 					},
  					error : function() {
 						alert("系统异常，请稍后重试！");

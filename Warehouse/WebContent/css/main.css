@@ -207,6 +207,11 @@ ul#navform li#navactive
 	background: url("image/tab_active_left.png") no-repeat scroll left top transparent;
 }
 
+li#selected a:hover
+{
+	background: url("image/tab_inactive_left.png") no-repeat scroll left top transparent;
+}
+
 /*内容布局*/
 div#content_head
 {

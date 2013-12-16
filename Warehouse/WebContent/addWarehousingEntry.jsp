@@ -15,7 +15,7 @@
 		<form action="add_WarehousingEntry" method="post" id="my_entry">
 			<div id="content_head">
 				<ul class="ul_nav">
-					<li>制单日期：<input type="text" id="prepared_date" name="entryBean.prepared_by_date" readonly="readonly"/></li>
+					<li>制单日期：<input type="text" id="prepared_date" name="entryBean.prepared_by_date" readonly="readonly" /></li>
 					<li>单据号码：<input type="text" name="entryBean.document_number" /></li>
 					<li>原始单号：<input type="text" name="entryBean.original_invoice_number" /></li>
 					<li>进货仓库：<input type="text" name="entryBean.shipping_warehouse" /></li>
@@ -93,32 +93,3 @@
 	
 </body>
 </html>
-
-
-
-
-<%-- <div id="content_head">
-				<ul class="ul_nav">
-					<li>制单日期：<input type="text" id="prepared_date"
-						name="entryBean.prepared_by_date" /> <s:fielderror>
-							<s:param>entryBean.prepared_by_date</s:param>
-						</s:fielderror>
-					</li>
-					<li>单据号码：<input type="text" name="entryBean.document_number" /> <s:fielderror>
-							<s:param>entryBean.document_number</s:param>
-						</s:fielderror>
-					</li>
-					<li>原始单号：<input type="text" name="entryBean.original_invoice_number" /> <s:fielderror>
-							<s:param>entryBean.original_invoice_number</s:param>
-						</s:fielderror>
-					</li>
-					<li>进货仓库：<input type="text" name="entryBean.shipping_warehouse" /> <s:fielderror>
-							<s:param>entryBean.shipping_warehouse</s:param>
-						</s:fielderror>
-					</li>
-					<li>供应商&nbsp;&nbsp;&nbsp;：<input type="text" name="entryBean.supplier" /> <s:fielderror>
-							<s:param>entryBean.supplier</s:param>
-						</s:fielderror>
-					</li>
-				</ul>
-			</div> --%>

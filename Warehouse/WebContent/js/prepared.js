@@ -1,4 +1,4 @@
-function load()
+function load(tag)
 {
 	var date=new Date();
 	var day = date.getDate();//查询日期（1-31）
@@ -13,4 +13,17 @@ function load()
 	else 
 		month=month+1;
 	document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
+	
+	/*初始化左边导航兰状态*/
+	switch(tag)
+	{
+	case '1':
+		document.getElementById("form").getElementsByTagName("li")[0].setAttribute("id","selected");
+		break;
+	case '2':
+		document.getElementById("form").getElementsByTagName("li")[1].setAttribute("id","selected");
+		break;
+	default:
+		break;
+	}
 }

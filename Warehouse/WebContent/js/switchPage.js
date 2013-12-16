@@ -1,4 +1,4 @@
-function switchPageOfEntry(tag)
+function switchPage(tag)
 {
 	document.getElementById("navactive").setAttribute("id", "");
 	document.getElementById("navform").getElementsByTagName("li")[tag].setAttribute("id","navactive");
@@ -21,5 +21,4 @@ function switchPageOfEntry(tag)
 	default:
 		break;
 	}
-
 }

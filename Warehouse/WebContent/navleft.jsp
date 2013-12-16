@@ -7,10 +7,10 @@
 <body>
 		<div class="navsection">
 			<h4 id="navhead">表单管理</h4>
-			<ul class="menu-one">
-				<li id="selected"><a href="selectWarehousingEntry.jsp">收货入库单</a></li>
-				<li><a href="selectMaterialsRequisition.jsp">领料出库单</a></li>
-				<li><a href="selectDeliveryOrder.jsp">销售出库单</a></li>
+			<ul id="form">
+				<li><a href="MainWarehousingEntry.jsp">收货入库单</a></li>
+				<li><a href="MainMaterialsRequisition.jsp">领料出库单</a></li>
+				<li><a href="#">销售出库单</a></li>
 			</ul>
 		</div>
 		

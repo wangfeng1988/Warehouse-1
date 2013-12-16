@@ -54,17 +54,11 @@ function DelRow()
    if(shu==cheCou.length)
    {
      alert('最少要有一件货物');
-     
-     alert(shu);
-     alert(cheCou.length);
      return;
    }
    else  if(shu==0)
    {
      alert('请选择你要删除的信息');
-     
-     alert(shu);
-     alert(cheCou.length);
      return;
    }
    else if(shu==1)

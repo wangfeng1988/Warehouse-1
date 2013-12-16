@@ -1,0 +1,12 @@
+
+div.detail_div
+{
+	margin: 20px;
+}
+
+div#table_head,div#table_body
+{
+	width:800px;
+	height:auto;
+	overflow: hidden;
+}

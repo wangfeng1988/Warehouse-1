@@ -5,15 +5,7 @@
 
 <struts>
 
-	<package name="entryActions" extends="struts-default">
-		<action name="selectDetails_WarehousingEntry" class="warehousingEntryAction"
-			method="selectDetails">
-			<result name="excel">/makeExcelEntry.jsp</result>
-			<result name="success">/detailsWarehousingEntry.jsp</result>
-		</action>
-	</package>
-	
-	<package name="entryActions_json" extends="json-default">
+	<package name="entryActions" extends="struts-default,json-default">
 
 		<action name="add_WarehousingEntry" class="warehousingEntryAction"
 			method="add">
@@ -29,5 +21,10 @@
 	        </result>
 		</action>
 				
+		<action name="selectDetails_WarehousingEntry" class="warehousingEntryAction"
+			method="selectDetails">
+			<result name="excel">/makeExcelEntry.jsp</result>
+			<result name="success">/detailsWarehousingEntry.jsp</result>
+		</action>		
 	</package>
 </struts>

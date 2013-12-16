@@ -31,13 +31,6 @@ public class WarehousingEntryAction extends ActionSupport implements ServletRequ
 		}
 	}
 	
-	//由于点击详情会刷新搜索页面，这个时候存在BUG会使以下两项为空，所以验证防止出错（之后ajax修改)
-/*	public void validateSelect()
-	{
-		if(searchKey==null || searchType==null)
-			addFieldError("search_error","请填写必要信息");
-	}*/
-	
 	public String add() throws Exception
 	{
 		try
@@ -75,11 +68,7 @@ public class WarehousingEntryAction extends ActionSupport implements ServletRequ
 		return SUCCESS;
 	}
 	
-	public String modify() throws Exception
-	{
-		return SUCCESS;
-	}
-	
+
 	public String select() throws Exception
 	{
 		try

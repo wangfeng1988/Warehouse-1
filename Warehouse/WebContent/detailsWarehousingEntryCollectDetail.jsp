@@ -9,28 +9,36 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/tablecloth.js"></script>
 
-<title>临时页面</title>
+<link rel="stylesheet" type="text/css" href="css/tablecloth.css" />
+<link rel="stylesheet" type="text/css" href="css/detailtable.css" />
+
+<title>明细页面</title>
 
 </head>
 
 <body class="browserscripting" >
-
-	<div id="wrapper">
 	
-		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
-			<h1>入库单详情</h1>
-			<table id="details">
-					<tr>
-						<td><s:property value="entryCollect_details.maked_year_month" /></td><td>收货入库单明细表</td>
-					</tr>
-					
-					<s:iterator value="entryCollect_details.entrysdetail" id="detail" status="supplier_index">
+	<div class="detail_div">
+	
+		<h1>入库单明细</h1>
+	
+		<div id="content_head">
+			<ul class="ul_nav">
+				<li><input type="text"
+					value=<s:property value="entryCollect_details.maked_year_month" />
+					readonly="readonly" />收货入库单明细</li>
+			</ul>
+		</div>
+		
+		<div>
+			<div id="table_body">
+				<table>
+				<s:iterator value="entryCollect_details.entrysdetail" id="detail" status="supplier_index">
 						<tr>
 							<td>供应商</td><td><s:property value="#detail.supplier" /></td>
-							<td>入库物料合计金额</td><td><s:property value="#detail.total_money" /></td>
+							<td>合计金额</td><td><s:property value="#detail.total_money" /></td>
 						</tr>
 
 						<tr>
@@ -65,14 +73,23 @@
 
 				</s:iterator>
 				</table>
-				
-				<form action="selectDetails_WarehousingEntryCollect">
-					<input type="hidden" value=<s:property value="entryCollect_details.id"/> name="id"/>
-					<input type="hidden" value="3" name="tag" />
-					<input type="submit" value="导出EXCEL"/>
-				</form>
+			</div>
 		</div>
-	</div>
-	
+
+		<div id="content_foot">
+			<ul class="ul_nav content_foot_ul">
+				<li>合计金额:<input type="text"
+					value=<s:property value="entryCollect_details.total_money" />
+					readonly="readonly" /></li>
+			</ul>
+
+			<form action="selectDetails_WarehousingEntryCollect">
+				<input type="hidden"
+					value=<s:property value="entryCollect_details.id"/> name="id" /> <input
+					type="hidden" value="3" name="tag" /> <input type="submit"
+					value="导出EXCEL" />
+			</form>
+		</div>			
+	</div>	
 </body>
 </html>

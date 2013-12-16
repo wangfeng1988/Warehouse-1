@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="requisitionActions" extends="struts-default">
+	<package name="requisitionActions" extends="struts-default,json-default">
 
 		<action name="add_MaterialsRequisition" class="materialsRequisitionAction"
 			method="add">
@@ -12,15 +12,11 @@
 			<result name="success">/addMaterialsRequisition.jsp</result>
 		</action>
 
-		<action name="delete_MaterialsRequisition" class="materialsRequisitionAction"
-			method="delete">
-			<result name="success">/thankyou.jsp</result>
-		</action>
-
 		<action name="select_MaterialsRequisition" class="materialsRequisitionAction"
 			method="select">
-			<result name="input">/selectMaterialsRequisition.jsp</result>
-			<result name="success">/selectMaterialsRequisition.jsp</result>
+			<result type="json">
+	                <param name="root">result</param>
+	        </result>
 		</action>
 		
 		<action name="selectDetails_MaterialsRequisition" class="materialsRequisitionAction"

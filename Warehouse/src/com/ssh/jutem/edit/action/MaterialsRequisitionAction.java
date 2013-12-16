@@ -1,9 +1,16 @@
 package com.ssh.jutem.edit.action;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ssh.jutem.edit.model.Material;
@@ -11,15 +18,9 @@ import com.ssh.jutem.edit.model.MaterialsRequisition;
 import com.ssh.jutem.edit.model.Requisition_Material;
 import com.ssh.jutem.edit.service.IMaterialsRequisitionService;
 
-public class MaterialsRequisitionAction extends ActionSupport 
+public class MaterialsRequisitionAction extends ActionSupport implements ServletRequestAware
 {
-	//由于点击详情会刷新搜索页面，这个时候存在BUG会使以下两项为空，所以验证防止出错（之后ajax修改)
-	public void validateSelect()
-	{
-		if(searchKey==null || searchType==null)
-			addFieldError("search_error","请填写必要信息");
-	}
-	
+
 	public String add()
 	{
 		System.out.println("this is material requisition action");	
@@ -31,28 +32,39 @@ public class MaterialsRequisitionAction extends ActionSupport
 		return SUCCESS;
 	}
 	
-	public String delete()
-	{
-/*		System.out.println("this is material requisition delete action");
-		if(!requisitionService.delete(requisitionBean))
-			System.out.println("spring success");*/
-		return SUCCESS;
-	}
-	
-	public String modify()
-	{
-		return SUCCESS;
-	}
 	
 	public String select() throws Exception
 	{
-		System.out.println("this is select entry");
-		System.out.println(searchKey+"   "+searchType);
-		
-		result=requisitionService.select(searchKey, searchType);
-		
-		System.out.println(result);
-		
+		try
+		{
+			System.out.println("this is select entry");
+			
+			searchKey=request.getParameter("searchKey");
+			searchType=request.getParameter("searchType");
+			
+			System.out.println(searchKey+"   "+searchType);
+			
+			List<MaterialsRequisition> requisitions=requisitionService.select(searchKey, searchType);
+				
+			Map<String, List<MaterialsRequisition>> map=new HashMap<String, List<MaterialsRequisition>>();
+			
+			map.put("result", requisitions);
+			
+			JsonConfig jsonConfig = new JsonConfig();
+	        String[] excludes = {"requisition_material"}; 		
+	        jsonConfig.setExcludes(excludes);
+			
+			JSONObject json=JSONObject.fromObject(map,jsonConfig);
+				
+			result=json.toString();
+			
+			System.out.println(result);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+			
 		return SUCCESS;
 	}
 	
@@ -110,10 +122,10 @@ public class MaterialsRequisitionAction extends ActionSupport
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
-	public List<MaterialsRequisition> getResult() {
+	public String getResult() {
 		return result;
 	}
-	public void setResult(List<MaterialsRequisition> result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 	public int getId() {
@@ -135,6 +147,11 @@ public class MaterialsRequisitionAction extends ActionSupport
 	public void setIsExcel(int isExcel) {
 		this.isExcel = isExcel;
 	}
+	@Override
+	public void setServletRequest(HttpServletRequest arg0)
+	{
+		this.request=arg0;
+	}
 
 	private List<Material> materialBeans;
 	private MaterialsRequisition requisitionBean;
@@ -144,7 +161,7 @@ public class MaterialsRequisitionAction extends ActionSupport
 	private String searchKey;
 	private String searchType;
 	
-	private List<MaterialsRequisition> result=new ArrayList<MaterialsRequisition>();
+	private String result;
 	
 	/*查询详情*/
 	private int id;
@@ -152,6 +169,8 @@ public class MaterialsRequisitionAction extends ActionSupport
 	
 	/*excel*/
 	private int isExcel=0; //可改成boolean，strutsBean赋值
+	
+	private HttpServletRequest request;
 	
 	@Resource
 	private IMaterialsRequisitionService requisitionService;
