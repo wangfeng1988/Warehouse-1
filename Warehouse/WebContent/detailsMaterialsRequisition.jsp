@@ -9,70 +9,92 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/tablecloth.js"></script>
 
-<title>临时页面</title>
+<link rel="stylesheet" type="text/css" href="css/tablecloth.css" />
+<link rel="stylesheet" type="text/css" href="css/detailtable.css" />
+
+<title>汇总详情页面</title>
 
 </head>
 
 <body class="browserscripting">
-
-	<div id="wrapper">
+	<div class="detail_div">
 	
-		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
-			<h1>入库单详情</h1>
-			<table id="details">
-				<tr>
-					<td>制单日期：</td><td><s:property value="requisition_detials.prepared_by_date" /></td>
-					<td>单据号码：</td><td><s:property value="requisition_detials.document_number" /></td>
-					<td>原始单号：</td><td><s:property value="requisition_detials.original_invoice_number" /></td>
-				</tr>
-				<tr>
-					<td>发货仓库：</td><td><s:property value="requisition_detials.shipping_warehouse" /></td>
-					<td>领料单位：</td><td><s:property value="requisition_detials.requisition_unit" /></td>
-				</tr>
-				
-				<tr>
-					<th>序号</th>
-					<th>物料编码</th>
-					<th>物料名称</th>
-					<th>物料规格</th>
-					<th>单位</th>
-					<th>单价</th>
-					<th>数量</th>
-					<th>金额</th>
-					<th>备注</th>
-				</tr>
-
-				<s:iterator value="requisition_detials.requisition_material" id="rm" status="index">
-				<tr>
-						<td><s:property value="#index.index" /></td>
-						<td><s:property value="#rm.material.coding" /></td>
-						<td><s:property value="#rm.material.name" /></td>
-						<td><s:property value="#rm.material.specification" /></td>
-						<td><s:property value="#rm.material.unit" /></td>
-						<td><s:property value="#rm.material.warehousing_price" /></td>
-						<td><s:property value="#rm.number" /></td>
-						<td><s:property value="#rm.money" /></td>
-						<td><s:property value="#rm.material.remark" /></td>
-				</tr>
-				</s:iterator>
-				
-				<tr>
-					<td>合计金额:</td><td><s:property value="requisition_detials.total_money" /></td>
-					<td>数量小计:</td><td><s:property value="requisition_detials.total_number" /></td>
-				</tr>
-			</table>
-				
+		<h1>领料出库单详情</h1>
+		
+		<div id="content_head">
+			<ul class="ul_nav">
+				<li>制单日期：<input type="text"
+					value=<s:property value="requisition_detials.prepared_by_date" />
+					readonly="readonly" /></li>
+				<li>单据号码：<input type="text"
+					value=<s:property value="requisition_detials.document_number" />
+					readonly="readonly" /></li>
+				<li>原始单号：<input type="text"
+					value=<s:property value="requisition_detials.original_invoice_number" />
+					readonly="readonly" /></li>
+				<li>进货仓库：<input type="text"
+					value=<s:property value="requisition_detials.shipping_warehouse" />
+					readonly="readonly" /></li>
+				<li>供应商&nbsp;&nbsp;&nbsp;：<input type="text"
+					value=<s:property value="requisition_detials.requisition_unit" />
+					readonly="readonly" /></li>
+			</ul>
+		</div>
+		
+		<div>
+			<div id="table_head">
+				<table>
+					<tr>
+						<th class="short">序号</th>
+						<th>物料编码</th>
+						<th>物料名称</th>
+						<th>物料规格</th>
+						<th>单位</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>金额</th>
+						<th>备注</th>
+					</tr>
+				</table>
+			</div>
+			<div id="table_body">
+				<table id="material">
+					<s:iterator value="requisition_detials.requisition_material"
+						id="rm" status="index">
+						<tr>
+							<td class="short"><s:property value="#index.index" /></td>
+							<td><s:property value="#rm.material.coding" /></td>
+							<td><s:property value="#rm.material.name" /></td>
+							<td><s:property value="#rm.material.specification" /></td>
+							<td><s:property value="#rm.material.unit" /></td>
+							<td><s:property value="#rm.material.warehousing_price" /></td>
+							<td><s:property value="#rm.number" /></td>
+							<td><s:property value="#rm.money" /></td>
+							<td><s:property value="#rm.material.remark" /></td>
+						</tr>
+					</s:iterator>
+				</table>
+			</div>
+		</div>
+		
+		<div id="content_foot">
+			<ul class="ul_nav content_foot_ul">
+				<li>合计金额:<input type="text"
+					value=<s:property value="requisition_detials.total_money" />
+					readonly="readonly" /></li>
+				<li>数量小计:<input type="text"
+					value=<s:property value="requisition_detials.total_number" />
+					readonly="readonly" /></li>
+			</ul>
 			<form action="selectDetails_MaterialsRequisition">
-				<input type="hidden" value=<s:property value="requisition_detials.id"/> name="id"/>
-				<input type="hidden" value="1" name="isExcel" />
-				<input type="submit" value="导出EXCEL"/>
+				<input type="hidden"
+					value=<s:property value="requisition_detials.id"/> name="id" /> <input
+					type="hidden" value="1" name="isExcel" /> <input type="submit"
+					value="导出EXCEL" />
 			</form>
-			
 		</div>
 	</div>
-	
 </body>
 </html>

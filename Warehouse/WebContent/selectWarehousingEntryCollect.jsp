@@ -72,8 +72,8 @@
 							$.each(result,function(j,item)
 							{
 								var row="<tr><td>"+item['maked_year_month']+"</td>"+"<td>"+item['total_money']+"</td>"+
-								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntryCollect.jsp?id="+item["id"]+"','detailsWarehousingCollect','930','500') /></td>"+
-								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetEntryCollectDetail.jsp?id="+item["id"]+"','detailsWarehousingCollectDetail','930','500') /></td>"+
+								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntryCollect.jsp?id="+item["id"]+"','detailsWarehousingEntryCollect','930','500') /></td>"+
+								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetEntryCollectDetail.jsp?id="+item["id"]+"','detailsWarehousingEntryCollectDetail','930','500') /></td>"+
 								"</tr>";
 								
 								$("#collect_table").append(row);

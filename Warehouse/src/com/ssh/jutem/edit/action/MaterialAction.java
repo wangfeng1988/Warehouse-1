@@ -1,29 +1,56 @@
 package com.ssh.jutem.edit.action;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ssh.jutem.edit.model.Material;
 import com.ssh.jutem.edit.service.IMaterialService;
 
-public class MaterialAction extends ActionSupport
+public class MaterialAction extends ActionSupport implements ServletRequestAware
 {
 	public String select()
 	{
-		System.out.println("this is select material");
-		System.out.println(searchKey+"   "+searchType);
+		try
+		{
+			System.out.println("this is select material");
+			
+			searchKey=request.getParameter("searchKey");
+			searchType=request.getParameter("searchType");
+			
+			System.out.println(searchKey+"   "+searchType);
+			
+			List<Material> materials=materialService.select(searchKey, searchType);
+				
+			Map<String, List<Material>> map=new HashMap<String, List<Material>>();
+			
+			map.put("result", materials);
+			
+			JsonConfig jsonConfig = new JsonConfig();
+	        String[] excludes = {"entry","requisition_material"}; 		
+	        jsonConfig.setExcludes(excludes);
+			
+			JSONObject json=JSONObject.fromObject(map,jsonConfig);
+				
+			result=json.toString();
+			
+			System.out.println(result);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		
-		result=materialService.select(searchKey, searchType);
-		
-		System.out.println(result);
-		
-		if(type==1)
-			return "for_req";
-		else
-			return SUCCESS;
+		return SUCCESS;
 	}
 	
 	/*get(),set()*/
@@ -39,10 +66,10 @@ public class MaterialAction extends ActionSupport
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
-	public List<Material> getResult() {
+	public String getResult() {
 		return result;
 	}
-	public void setResult(List<Material> result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 	public IMaterialService getMaterialService() {
@@ -51,27 +78,29 @@ public class MaterialAction extends ActionSupport
 	public void setMaterialService(IMaterialService materialService) {
 		this.materialService = materialService;
 	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
+	@Override
+	public void setServletRequest(HttpServletRequest arg0) 
+	{
+		request=arg0;	
 	}
 
 	/*查询*/
 	private String searchKey;
 	private String searchType;
 	
+	private String result;
+	
 	/*type
 	 * 0,普通查询
 	 * 1,为领料出库单查询
 	 * */
-	private int type=0;
+/*	private int type=0;*/
 	
-	private List<Material> result=new ArrayList<Material>();
+	private HttpServletRequest request;
 	
 	@Resource
 	private IMaterialService materialService;
 		
 	private static final long serialVersionUID = 1L;
+
 }

@@ -12,16 +12,21 @@ function load(tag)
 		month="0"+(month+1);
 	else 
 		month=month+1;
-	document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
+
 	
 	/*初始化左边导航兰状态*/
 	switch(tag)
 	{
 	case '1':
 		document.getElementById("form").getElementsByTagName("li")[0].setAttribute("id","selected");
+		document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
 		break;
 	case '2':
 		document.getElementById("form").getElementsByTagName("li")[1].setAttribute("id","selected");
+		document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
+		break;
+	case '3':
+		document.getElementById("warehouse").getElementsByTagName("li")[0].setAttribute("id","selected");
 		break;
 	default:
 		break;

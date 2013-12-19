@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/tablecloth.css" />
 <link rel="stylesheet" type="text/css" href="css/detailtable.css" />
 
-<title>汇总页面</title>
+<title>汇总详情页面</title>
 
 </head>
 

@@ -11,7 +11,7 @@
 <body>
 	<div id="collect" class="tabhidden">
 	
-		<h1>查询收货入库单汇总</h1>
+		<h1>查询领料出库单汇总</h1>
 		
 		<div id="content_head">
 			<form action="#" method="post">
@@ -52,10 +52,9 @@
 
 			var $btn = $("input.search_collect");
 			$btn.bind("click", function() {
-						
 				$.ajax({
 					type : "post",
-					url : "select_WarehousingEntryCollect",
+					url : "select_MaterialsRequisitionCollect",
 					data : 
 					{
 						searchKey : $("input[name=CollectsearchKey]").val(),
@@ -72,8 +71,8 @@
 							$.each(result,function(j,item)
 							{
 								var row="<tr><td>"+item['maked_year_month']+"</td>"+"<td>"+item['total_money']+"</td>"+
-								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetEntryCollect.jsp?id="+item["id"]+"','detailsWarehousingCollect','930','500') /></td>"+
-								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetEntryCollectDetail.jsp?id="+item["id"]+"','detailsWarehousingCollectDetail','930','500') /></td>"+
+								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetRequisitionCollect.jsp?id="+item["id"]+"','detailsMaterialsRequisitionCollect','930','500') /></td>"+
+								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetRequisitionCollectDetail.jsp?id="+item["id"]+"','detailsMaterialsRequisitionCollectDetail','930','500') /></td>"+
 								"</tr>";
 								
 								$("#collect_table").append(row);

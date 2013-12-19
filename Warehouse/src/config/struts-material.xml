@@ -4,12 +4,13 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="materialActions" extends="struts-default">
+	<package name="materialActions" extends="struts-default,json-default">
 
 		<action name="select_Material" class="materialAction"
 			method="select">
-			<result name="for_req">/selectMatForReq.jsp</result>
-			<result name="success">/selectMaterial.jsp</result>
+			<result type="json">
+	                <param name="root">result</param>
+	        </result>
 		</action>		
 	</package>
 </struts>

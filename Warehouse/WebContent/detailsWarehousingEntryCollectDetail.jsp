@@ -37,8 +37,8 @@
 				<table>
 				<s:iterator value="entryCollect_details.entrysdetail" id="detail" status="supplier_index">
 						<tr>
-							<td>供应商</td><td><s:property value="#detail.supplier" /></td>
-							<td>合计金额</td><td><s:property value="#detail.total_money" /></td>
+							<th>供应商</th><th><s:property value="#detail.supplier" /></th>
+							<th>合计金额</th><th><s:property value="#detail.total_money" /></th>
 						</tr>
 
 						<tr>

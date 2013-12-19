@@ -16,8 +16,8 @@
 		
 		<div class="navsection">
 			<h4 id="navhead">仓库管理</h4>
-			<ul>
-				<li><a href="selectMaterial.jsp">仓库货品</a></li>
+			<ul id="warehouse">
+				<li><a href="MainMaterial.jsp">仓库货品</a></li>
 				<li><a href="#">盘库管理</a></li>
 			</ul>
 		</div>
