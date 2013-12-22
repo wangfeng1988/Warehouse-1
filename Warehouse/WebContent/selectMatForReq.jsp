@@ -44,7 +44,8 @@
 			<div id="table_head">
 				<table>
 					<tr>
-						<th class="first">货品编码</th>
+						<th class="first">选择</th>
+						<th>货品编码</th>
 						<th>货品名称</th>
 						<th>货品规格</th>
 						<th>单位</th>
@@ -60,11 +61,13 @@
 			</div>
 
 			<div id="table_body">
-				<table id="material_table">
+				<table id="source">
 
 				</table>
 			</div>
 		</div>	
+		
+		<input type="button" value="提交" onclick="SourceToGoal()"/>
 	</div>
 	
 	<script type="text/javascript">
@@ -73,7 +76,6 @@
 
 			var $btn = $("input.search_requisition");
 			$btn.bind("click", function() {
-				alert("hello");
 				$.ajax({
 					type : "post",
 					url : "select_Material",
@@ -86,20 +88,22 @@
 					success : function(data) {
 						var d = eval("(" + data + ")");
 						
-						$("#requisition_table").empty();
+						$("#source").empty();
 						
 						$.each(d,function(i,result)
 						{
 							$.each(result,function(j,item)
 							{
-								var row="<tr><td>"+item['coding']+"</td>"+"<td>"+item['name']+"</td>"+
+								var row="<tr>"+"<td><input type=checkbox name='box' /></td>"+
+								"<td>"+item['coding']+"</td>"+"<td>"+item['name']+"</td>"+
 								"<td>"+item['specification']+"</td>"+"<td>"+item['unit']+"</td>"+
 								"<td>"+item['warehousing_price']+"</td>"+"<td>"+item['sales_price']+"</td>"+"<td>"+item['amount']+"</td>"+
 								"<td>"+item['stock']+"</td>"+"<td>"+item['money']+"</td>"+"<td>"+item['remark']+"</td>"+
 								"<td><input type='text' name='need' /></td>"+
+								"<td class='m_id'>"+"<input name='material_id' type='hidden' value='"+item['id']+"' />"+"</td>"+
 								"</tr>";
 								
-								$("#material_table").append(row);
+								$("#source").append(row);
 							});			
 						});
 					},

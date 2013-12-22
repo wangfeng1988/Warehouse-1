@@ -40,9 +40,9 @@
 					</table>
 				</div>
 				<div id="table_body">
-					<table id="material">
+					<table id="goal">
 						<tr>
-							<td class="short"><input type=checkbox name="box1" /></td>
+							<td class="short"><input type=checkbox name="box" /></td>
 							<td><input type="text" name="materialBeans[0].coding" /></td>
 							<td><input type="text" name="materialBeans[0].name" /></td>
 							<td><input type="text" name="materialBeans[0].specification" /></td>

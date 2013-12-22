@@ -5,20 +5,6 @@
 
 <html>
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<script type="text/javascript" src="js/prepared.js"></script>
-<script type="text/javascript" src="js/open_window.js"></script>
-<script type="text/javascript" src="js/makeForm.js"></script>
-<script type="text/javascript" src="js/tableTotable.js"></script>
-
-
-
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-
-<title>临时页面</title>
-
 </head>
 
 <body>
@@ -27,7 +13,7 @@
 	
 		<h1>添加领料出库单</h1>
 
-		<form id="requisition_form" action="add_MaterialsRequisition" method="post">
+		<form id="my_requisition" action="add_MaterialsRequisition" method="post">
 			<div id="form_information">
 				<ul class="ul_nav">
 					<li>制单日期：<input type="text" id="prepared_date" name="requisitionBean.prepared_by_date" readonly="readonly" /></li>
@@ -46,28 +32,17 @@
 							<th>物料名称</th>
 							<th>物料规格</th>
 							<th>单位</th>
-							<th>单价</th>
+							<th>入库单价</th>
+							<th>销售单价</th>
 							<th>需求数量</th>
-							<th>金额</th>
 							<th>金额</th>
 							<th>备注</th>
 						</tr>
 					</table>
 				</div>
 				<div id="table_body">
-					<table id="material">
-						<tr>
-							<td class="short"><input type=checkbox name="box1" /></td>
-							<td><input type="text" name="materialBeans[0].coding" /></td>
-							<td><input type="text" name="materialBeans[0].name" /></td>
-							<td><input type="text" name="materialBeans[0].specification" /></td>
-							<td><input type="text" name="materialBeans[0].unit" /></td>
-							<td><input type="text" name="materialBeans[0].warehousing_price" /></td>
-							<td><input type="text" name="materialBeans[0].sales_price" /></td>
-							<td><input type="text" name="materialBeans[0].amount" /></td>
-							<td><input type="text" name="materialBeans[0].money" /></td>
-							<td><input type="text" name="materialBeans[0].remark" /></td>
-						</tr>
+					<table id="goal">
+
 					</table>
 				</div>
 			</div>
@@ -83,55 +58,36 @@
 					<li>合计金额:<input type="text" name="requisitionBean.total_money" /></li>
 					<li>数量小计:<input type="text" name="requisitionBean.total_number" /></li>
 				</ul>
-				<input type="button" value="提交" class="submit_entry"/>
+				<input type="button" value="提交" class="submit_requisition"/>
 			</div>
 
 		</form>
 	</div>
+	
+	 <script type="text/javascript">
+		/* 提交结果，执行ajax */
+		function btn_submit_requisition() {
+
+			var $btn = $("input.submit_requisition");
+			$btn.bind("click", function() {
+				var goal_table =document.getElementById("goal");
+				
+				/*设置需求数量，金额，物料id*/
+				for(var i=0;i<goal_table.rows.length;i++)
+				{
+					goal_table.rows[i].cells[7].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].number");
+					goal_table.rows[i].cells[8].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].money");
+					goal_table.rows[i].cells[10].getElementsByTagName('input')[0].setAttribute("name","materialBeans["+i+"].id");
+				}
+				
+ 				$('#my_requisition').ajaxSubmit(function (data) {
+ 					var d = eval("(" + data + ")");
+ 					alert(d["result"]);
+ 				});
+
+ 				return false;
+			});
+		}
+	</script>
 </body>
 </html>
-
-<%-- <div id="material_information">
-				<input type="hidden" id="box" />
-				<table id="goal_table" border="1">
-					<tr>
-						<th>选择</th>
-						<th>物料编码</th>
-						<th>物料名称</th>
-						<th>物料规格</th>
-						<th>单位</th>
-						<th>单价</th>
-						<th>需求数量</th>
-						<th>金额</th>
-						<th>备注</th>
-					</tr>
-				</table>
-
-				<s:fielderror>
-					<s:param>material_error</s:param>
-				</s:fielderror>
-
-				<ul class="ul_nav">
-					<li><input type="button" value="查询"
-						onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450')" />
-					</li>
-					<li><input type="button" value="删除" onclick="delMaterial()" />
-					</li>
-				</ul>
-			</div>
-
-			<div id="form_information">
-				<ul class="ul_nav">
-					<li>合计金额:<input name="requisitionBean.total_money" /> <s:fielderror>
-							<s:param>requisitionBean.total_money</s:param>
-						</s:fielderror>
-					</li>
-					<li>数量小计:<input name="requisitionBean.total_number" /> <s:fielderror>
-							<s:param>requisitionBean.total_number</s:param>
-						</s:fielderror>
-					</li>
-				</ul>
-			</div>
-			<input type="submit" value="提交" onclick="makeRequisition()" />
-		</form>
-	</div> --%>

@@ -248,6 +248,16 @@ div.tabactive
 	display: inline;
 }
 
+td.m_id
+{
+	display: none;
+}
+
+table#goal input
+{
+	width:50px;
+}
+
 /* ----------------------------------- footer-----------------------------------*/
 div#footer 
 {

@@ -8,8 +8,9 @@
 
 		<action name="add_MaterialsRequisition" class="materialsRequisitionAction"
 			method="add">
-			<result name="input">/addMaterialsRequisition.jsp</result>
-			<result name="success">/addMaterialsRequisition.jsp</result>
+			<result type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
 
 		<action name="select_MaterialsRequisition" class="materialsRequisitionAction"

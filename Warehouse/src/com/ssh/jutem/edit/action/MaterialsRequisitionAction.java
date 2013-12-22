@@ -21,14 +21,33 @@ import com.ssh.jutem.edit.service.IMaterialsRequisitionService;
 public class MaterialsRequisitionAction extends ActionSupport implements ServletRequestAware
 {
 
-	public String add()
+	public String add() throws Exception
 	{
-		System.out.println("this is material requisition action");	
-		System.out.println(requisitionBean.toString());	
-		
-		if(!requisitionService.add(requisitionBean,materialBeans,requisitionMaterialBeans))
-			System.out.println("spring success");
-		
+		try
+		{
+			System.out.println("this is material requisition action");	
+			System.out.println(requisitionBean.toString());	
+			
+			for(Material m:materialBeans)
+				System.out.println(m.toString());
+			
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("result", "添加成功");
+			
+			JSONObject json=JSONObject.fromObject(map);
+			
+			result=json.toString();
+			
+			System.out.println(result);
+			
+			if(!requisitionService.add(requisitionBean,materialBeans,requisitionMaterialBeans))
+				System.out.println("spring success");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
 		return SUCCESS;
 	}
 	

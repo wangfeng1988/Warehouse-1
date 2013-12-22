@@ -6,5 +6,10 @@ div.wrapper
 
 div#content_table
 {
-	width:800px
+	width: 800px;
+}
+
+div#table_body
+{
+	height: 300px;
 }

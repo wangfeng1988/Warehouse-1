@@ -49,7 +49,7 @@
 		$(document).ready(function() 
 		{
 			btn_search_requisition();
-/* 			btn_submit_requisition(); */
+ 			btn_submit_requisition();
 			btn_collect();
 		});
 	</script>

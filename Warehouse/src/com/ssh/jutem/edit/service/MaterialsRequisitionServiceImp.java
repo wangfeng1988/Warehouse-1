@@ -45,12 +45,18 @@ public class MaterialsRequisitionServiceImp implements IMaterialsRequisitionServ
 			/*在页面中添加删除行的时候可能会导致带之前下标项被删除，导致出现空项*/
 			if(materialBeans.get(i)==null || requisition_material.get(i)==null)
 				continue;
-			double stock=((Material)materials.get(i)).getStock();
-			double need=requisition_material.get(i).getNumber();
-			
-			System.out.println(stock+" "+need);
-			
-			materialBeans.get(i).setStock(stock-need);
+			for(int j=0;j<materials.size();j++)
+			{
+				if(materialBeans.get(i).getId()==((Material)materials.get(j)).getId())
+				{
+					double stock=((Material)materials.get(j)).getStock();
+					double need=requisition_material.get(i).getNumber();
+					
+					System.out.println("stock:"+stock+"need:"+need);
+					
+					materialBeans.get(i).setStock(stock-need);
+				}
+			}
 		}
 
 		requisitionDao.add(requisitionBean,materialBeans);

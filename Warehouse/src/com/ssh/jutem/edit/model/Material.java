@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Material 
 {
-	private int id;
+	private Integer id;
 	private String coding;	//货品编码
 	private String name;	//货品名称
 	private String specification;	//货品规格
@@ -31,10 +31,10 @@ public class Material
 	
 	@Id
 	@GeneratedValue
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getCoding() {
