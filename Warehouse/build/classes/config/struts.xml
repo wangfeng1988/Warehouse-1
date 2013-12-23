@@ -16,5 +16,6 @@
 	<include file="/config/struts-materials_requisition.xml"></include>
 	<include file="/config/struts-materials_requisitionCollect.xml"></include>
 	<include file="/config/struts-material.xml"></include>
+	<include file="/config/struts-user.xml"></include>
 
 </struts>

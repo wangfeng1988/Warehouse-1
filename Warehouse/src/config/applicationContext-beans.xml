@@ -13,6 +13,7 @@
 	<bean name="materialsRequisitionAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionAction" scope="prototype" />
 	<bean name="materialsRequisitionCollectAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionCollectAction" scope="prototype" />
 	<bean name="materialAction" class="com.ssh.jutem.edit.action.MaterialAction" scope="prototype" />
+	<bean name="userAction" class="com.ssh.jutem.edit.action.UserAction" scope="prototype" />
 	
 	<!-- 管理service -->
 	<bean id="entryService" class="com.ssh.jutem.edit.service.WarehousingEntryServiceImp" />
@@ -21,6 +22,7 @@
 	<bean id="requisitionService" class="com.ssh.jutem.edit.service.MaterialsRequisitionServiceImp" />
 	<bean id="requisitionCollectService" class="com.ssh.jutem.edit.service.MaterialsRequisitionCollectServiceImp" />
 	<bean id="materialService" class="com.ssh.jutem.edit.service.MaterialServiceImp" />
+	<bean id="userService" class="com.ssh.jutem.edit.service.UserServiceImp" />
 
 	<!-- 管理dao -->
 	<bean id="entryDao" class="com.ssh.jutem.edit.dao.WarehousingEntryDaoImp">
@@ -40,6 +42,10 @@
 	</bean>
 	
 	<bean id="materialDao" class="com.ssh.jutem.edit.dao.MaterialDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userDao" class="com.ssh.jutem.edit.dao.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

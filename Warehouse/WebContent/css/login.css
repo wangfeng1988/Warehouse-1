@@ -1,0 +1,78 @@
+
+
+html
+{
+	background: rgb(26, 16, 14);
+}
+
+div#logo
+{
+	width: 1010px;
+	height: 200px;
+	display: block;
+	position: absolute;
+	background: url("image/bg_top1_login.jpg") no-repeat scroll 0% 0% transparent;
+}
+
+div#login_form
+{
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	background: url("image/bg_login_top.gif") no-repeat scroll 0% 0% rgb(255, 255, 255);
+	width: 600px;
+	height:130px;
+}
+
+#login_form label {
+    display: block;
+    position: relative;
+    padding: 10px 0px;
+    float: left;
+    width: 200px;
+    height: 45px;
+}
+
+.label1
+{
+	margin:25px 10px auto 30px;
+}
+
+.label2
+{
+	margin:25px 10px auto 5px;
+}
+
+#login_form input
+{
+	border: 1px solid rgb(204, 204, 204);
+	height: 27px;
+	padding: 0px 5px;
+	position: absolute;
+	top: 30px;
+	left: 0px;
+	outline: medium none;
+	width: 170px;
+	background: none repeat scroll 0% 0% rgb(247, 247, 247);
+}
+
+#login_form button
+{
+	outline: medium none;
+	border: medium none;
+	color: rgb(165, 154, 146);
+	font-size: 11px;
+	text-transform: capitalize;
+	background: none repeat scroll 0% 0% transparent;
+	width: 100px;
+	height: 40px;
+}
+
+div.button
+{
+	float:right;
+	margin-top: 55px;
+	margin-right: 25px;
+	background: url("image/box-left.gif") repeat scroll left top transparent;
+
+}

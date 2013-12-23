@@ -31,6 +31,9 @@ public class MaterialsRequisitionAction extends ActionSupport implements Servlet
 			for(Material m:materialBeans)
 				System.out.println(m.toString());
 			
+			if(!requisitionService.add(requisitionBean,materialBeans,requisitionMaterialBeans))
+				System.out.println("spring success");
+			
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("result", "添加成功");
 			
@@ -39,9 +42,6 @@ public class MaterialsRequisitionAction extends ActionSupport implements Servlet
 			result=json.toString();
 			
 			System.out.println(result);
-			
-			if(!requisitionService.add(requisitionBean,materialBeans,requisitionMaterialBeans))
-				System.out.println("spring success");
 		}
 		catch(Exception e)
 		{
