@@ -21,24 +21,21 @@
 <body class="browserscripting">
 	<div class="detail_div">
 	
-		<h1>领料出库单详情</h1>
+		<h1>销售出库单详情</h1>
 		
 		<div id="content_head">
 			<ul class="ul_nav">
 				<li>制单日期：<input type="text"
-					value=<s:property value="requisition_detials.prepared_by_date" />
+					value=<s:property value="delivery_detials.prepared_by_date" />
 					readonly="readonly" /></li>
 				<li>单据号码：<input type="text"
-					value=<s:property value="requisition_detials.document_number" />
-					readonly="readonly" /></li>
-				<li>原始单号：<input type="text"
-					value=<s:property value="requisition_detials.original_invoice_number" />
+					value=<s:property value="delivery_detials.document_number" />
 					readonly="readonly" /></li>
 				<li>发货仓库：<input type="text"
-					value=<s:property value="requisition_detials.shipping_warehouse" />
+					value=<s:property value="delivery_detials.shipping_warehouse" />
 					readonly="readonly" /></li>
-				<li>供应商&nbsp;&nbsp;&nbsp;：<input type="text"
-					value=<s:property value="requisition_detials.requisition_unit" />
+				<li>客户姓名：<input type="text"
+					value=<s:property value="delivery_detials.customer_name" />
 					readonly="readonly" /></li>
 			</ul>
 		</div>
@@ -61,7 +58,7 @@
 			</div>
 			<div id="table_body">
 				<table id="material">
-					<s:iterator value="requisition_detials.requisition_material"
+					<s:iterator value="delivery_detials.delivery_material"
 						id="rm" status="index">
 						<tr>
 							<td class="short"><s:property value="#index.index" /></td>
@@ -82,15 +79,15 @@
 		<div id="content_foot">
 			<ul class="ul_nav content_foot_ul">
 				<li>合计金额:<input type="text"
-					value=<s:property value="requisition_detials.total_money" />
+					value=<s:property value="delivery_detials.total_money" />
 					readonly="readonly" /></li>
 				<li>数量小计:<input type="text"
-					value=<s:property value="requisition_detials.total_number" />
+					value=<s:property value="delivery_detials.total_number" />
 					readonly="readonly" /></li>
 			</ul>
-			<form action="selectDetails_MaterialsRequisition">
+			<form action="selectDetails_DeliveryOrder">
 				<input type="hidden"
-					value=<s:property value="requisition_detials.id"/> name="id" /> <input
+					value=<s:property value="delivery_detials.id"/> name="id" /> <input
 					type="hidden" value="1" name="isExcel" /> <input type="submit"
 					value="导出EXCEL" />
 			</form>

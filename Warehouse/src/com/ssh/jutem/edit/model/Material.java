@@ -28,7 +28,7 @@ public class Material
 	private String remark;	//备注
 	private WarehousingEntry entry;	
 	private Set<Requisition_Material> requisition_material=new HashSet<Requisition_Material>();
-	
+	private Set<Delivery_Material> delivery_material=new HashSet<Delivery_Material>();
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -115,7 +115,13 @@ public class Material
 			Set<Requisition_Material> requisition_material) {
 		this.requisition_material = requisition_material;
 	}
-	
+	@OneToMany(mappedBy="material",cascade={CascadeType.ALL})
+	public Set<Delivery_Material> getDelivery_material() {
+		return delivery_material;
+	}
+	public void setDelivery_material(Set<Delivery_Material> delivery_material) {
+		this.delivery_material = delivery_material;
+	}
 	@Override
 	public String toString() {
 		return "Material [id=" + id + ", coding=" + coding + ", name=" + name

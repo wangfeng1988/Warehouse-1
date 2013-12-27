@@ -22,22 +22,22 @@
 	
 	<div class="detail_div">
 	
-		<h1>领料出库单明细</h1>
+		<h1>销售出库单明细</h1>
 	
 		<div id="content_head">
 			<ul class="ul_nav">
 				<li><input type="text"
-					value=<s:property value="requisitionCollect_details.maked_year_month" />
-					readonly="readonly" />领料出库单明细</li>
+					value=<s:property value="deliveryCollect_details.maked_year_month" />
+					readonly="readonly" />销售出库单明细</li>
 			</ul>
 		</div>
 		
 		<div>
 			<div id="table_body">
 				<table>
-				<s:iterator value="requisitionCollect_details.requisitionsdetail" id="detail" status="supplier_index">
+				<s:iterator value="deliveryCollect_details.deliverysdetail" id="detail" status="customer_index">
 						<tr>
-							<th>领料单位</th><th><s:property value="#detail.requisition_unit" /></th>
+							<th>客户名</th><th><s:property value="#detail.customer_name" /></th>
 							<th>合计金额</th><th><s:property value="#detail.total_money" /></th>
 						</tr>
 
@@ -54,10 +54,10 @@
 							<th>出库单号</th>
 						</tr>
 
-					<s:iterator value="#detail.requisitions" id="requisition" status="requisition_index">
-						<s:iterator value="#requisition.requisition_material" id="rm" status="rm_index">
+					<s:iterator value="#detail.deliverys" id="delivery" status="delivery_index">
+						<s:iterator value="#delivery.delivery_material" id="rm" status="rm_index">
 							<tr>
-								<td><s:property value="#requisition_index.index" /></td>
+								<td><s:property value="#delivery_index.index" /></td>
 								<td><s:property value="#rm.material.coding" /></td>
 								<td><s:property value="#rm.material.name" /></td>
 								<td><s:property value="#rm.material.specification" /></td>
@@ -65,8 +65,8 @@
 								<td><s:property value="#rm.material.warehousing_price" /></td>
 								<td><s:property value="#rm.number" /></td>
 								<td><s:property value="#rm.money" /></td>
-								<td><s:property value="#requisition.prepared_by_date" /></td>
-								<td><s:property value="#requisition.document_number"/>
+								<td><s:property value="#delivery.prepared_by_date" /></td>
+								<td><s:property value="#delivery.document_number"/>
 							</tr>
 						</s:iterator>
 					</s:iterator>
@@ -79,13 +79,13 @@
 		<div id="content_foot">
 			<ul class="ul_nav content_foot_ul">
 				<li>合计金额:<input type="text"
-					value=<s:property value="requisitionCollect_details.total_money" />
+					value=<s:property value="deliveryCollect_details.total_money" />
 					readonly="readonly" /></li>
 			</ul>
 
-			<form action="selectDetails_MaterialsRequisitionCollect">
+			<form action="selectDetails_DeliveryOrderCollect">
 				<input type="hidden"
-					value=<s:property value="requisitionCollect_details.id"/> name="id" /> <input
+					value=<s:property value="deliveryCollect_details.id"/> name="id" /> <input
 					type="hidden" value="3" name="tag" /> <input type="submit"
 					value="导出EXCEL" />
 			</form>

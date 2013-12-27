@@ -18,8 +18,8 @@ response.setHeader("Content-disposition","attachment; filename=requisitionCollec
 
 	<table id="details">
 		<tr>
-			<td><s:property value="requisitionCollect_details.maked_year_month" /></td>
-			<td>领料出库单汇总</td>
+			<td><s:property value="deliveryCollect_details.maked_year_month" /></td>
+			<td>销售出库单汇总</td>
 		</tr>
 
 		<tr>
@@ -29,7 +29,7 @@ response.setHeader("Content-disposition","attachment; filename=requisitionCollec
 			<th>备注</th>
 		</tr>
 
-		<s:iterator value="requisitionCollect_details.requisitionsdetail" id="detail"
+		<s:iterator value="deliveryCollect_details.deliverysdetail" id="detail"
 			status="index">
 			<tr>
 				<td><s:property value="#index.index" /></td>
@@ -41,7 +41,7 @@ response.setHeader("Content-disposition","attachment; filename=requisitionCollec
 
 		<tr>
 			<td>合计金额:</td>
-			<td><s:property value="requisitionCollect_details.total_money" /></td>
+			<td><s:property value="deliveryCollect_details.total_money" /></td>
 		</tr>
 	</table>
 

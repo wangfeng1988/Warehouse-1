@@ -5,117 +5,89 @@
 
 <html>
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="js/nav.js" ></script>
-<script type="text/javascript" src="js/add_delete_td.js" ></script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-
-<title>临时页面</title>
-
 </head>
 
-<body class="browserscripting">
+<body>
 
-	<div id="wrapper">
+	<div id="add" class="tabhidden">
+	
+		<h1>添加领料出库单</h1>
 
-		<div id="navfirst" STYLE="border-style: solid; border-width: 5pt;">
-			<%-- <jsp:include page="control/control_navfirst_entry.jsp" /> --%>
-		</div>
-
-		<div id="navsecond" STYLE="border-style:solid;border-width:5pt;">
-			<jsp:include page="control/control_nav.jsp" />
-		</div>
-
-		<div id="maincontent" STYLE="border-style: solid; border-width: 5pt;">
-			<h1>添加销售出库单</h1>
-			<s:form action="add_WarehousingEntry" method="post" theme="simple" >
-				<div class="base_information">
-					<ul>
-						<li>制单日期：<s:textfield id="prepared" name="entryBean.prepared_by_date" /><s:fielderror>
-								<s:param>entryBean.prepared_by_date</s:param>
-							</s:fielderror>
-						</li>
-						<li>单据号码：<s:textfield name="entryBean.document_number" /> <s:fielderror>
-								<s:param>entryBean.document_number</s:param>
-							</s:fielderror>
-						</li>
-						<li>原始单号：<s:textfield name="entryBean.original_invoice_number" /> <s:fielderror>
-								<s:param>entryBean.original_invoice_number</s:param>
-							</s:fielderror>
-						</li>
-						<li>进货仓库：<s:textfield name="entryBean.shipping_warehouse" />
-							<s:fielderror>
-								<s:param>entryBean.shipping_warehouse</s:param>
-							</s:fielderror>
-						</li>
-						<li>供应商：<s:textfield name="entryBean.supplier" /> <s:fielderror>
-								<s:param>entryBean.supplier</s:param>
-							</s:fielderror>
-						</li>
-					</ul>
-				</div>
-				<div class="material_information">
-					<table id="material" border="1">
+		<form id="my_requisition" action="add_MaterialsRequisition" method="post">
+			<div id="form_information">
+				<ul class="ul_nav">
+					<li>制单日期：<input type="text" id="prepared_date" name="requisitionBean.prepared_by_date" readonly="readonly" /></li>
+					<li>单据号码：<input type="text" name="requisitionBean.document_number" /></li>
+					<li>原始单号：<input type="text" name="requisitionBean.original_invoice_number" /></li>
+					<li>发货仓库：<input type="text" name="requisitionBean.shipping_warehouse" /></li>
+					<li>领料单位：<input type="text" name="requisitionBean.requisition_unit" /></li>
+				</ul>
+			</div>
+			<div id="content_table">
+				<div id="table_head">
+					<table>
 						<tr>
-							<th>选择</th>
-							<th>货品编码</th>
-							<th>货品名称</th>
-							<th>货品规格</th>
+							<th class="first short" >选择</th>
+							<th>物料编码</th>
+							<th>物料名称</th>
+							<th>物料规格</th>
 							<th>单位</th>
 							<th>入库单价</th>
 							<th>销售单价</th>
-							<th>数量</th>
-							<th>入库价值</th>
+							<th>需求数量</th>
+							<th>金额</th>
 							<th>备注</th>
 						</tr>
-						<tr>
-							<td><input type=checkbox id="box1" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].coding" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].name" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].specification" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].unit" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].warehousing_price" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].sales_price" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].amount" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].money" /></td>
-							<td><s:textfield type="text" name="materialBeans[0].remark" /></td>
-						</tr>
-					</table>
-					
-					<s:fielderror>
-						<s:param>material_error</s:param>
-					</s:fielderror>
-
-					<table>
-					<tr>
-						<td>
-							<input type="button" name="Submit" value="增加一行" onclick="javascript:AddRow();" />
-							<input type="button" name="Submit" value="删除一行" onclick="javascript:DelRow();" />
-						</td>								
-					</tr>
 					</table>
 				</div>
+				<div id="table_body">
+					<table id="goal">
 
-
-				<div class="base_information">
-					<ul>
-						<li>合计金额:<s:textfield name="entryBean.total_money" /> <s:fielderror>
-								<s:param>entryBean.total_money</s:param>
-							</s:fielderror>
-						</li>
-						<li>数量小计:<s:textfield name="entryBean.total_number" /> <s:fielderror>
-								<s:param>entryBean.total_number</s:param>
-							</s:fielderror>
-						</li>
-					</ul>
+					</table>
 				</div>
-				<s:submit />
-			</s:form>
-		</div>
+			</div>
+			
+			<div id="content_foot">
+				<ul class="content_foot_button">
+					<li><input type="button" name="Submit" value="删除"
+						onclick="javascript:DelRow();" /></li>
+					<li><input type="button" name="Submit" value="查询"
+						onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450');" /></li>
+				</ul>
+				<ul class="ul_nav content_foot_ul">
+					<li>合计金额:<input type="text" name="requisitionBean.total_money" /></li>
+					<li>数量小计:<input type="text" name="requisitionBean.total_number" /></li>
+				</ul>
+				<input type="button" value="提交" class="submit_requisition"/>
+			</div>
+
+		</form>
 	</div>
 	
+	 <script type="text/javascript">
+		/* 提交结果，执行ajax */
+		function btn_submit_requisition() {
+
+			var $btn = $("input.submit_requisition");
+			$btn.bind("click", function() {
+				var goal_table =document.getElementById("goal");
+				
+				/*设置需求数量，金额，物料id*/
+				for(var i=0;i<goal_table.rows.length;i++)
+				{
+					goal_table.rows[i].cells[7].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].number");
+					goal_table.rows[i].cells[8].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].money");
+					goal_table.rows[i].cells[10].getElementsByTagName('input')[0].setAttribute("name","materialBeans["+i+"].id");
+				}
+				
+ 				$('#my_requisition').ajaxSubmit(function (data) {
+ 					var d = eval("(" + data + ")");
+ 					alert(d["result"]);
+ 				});
+
+ 				return false;
+			});
+		}
+	</script>
 </body>
 </html>

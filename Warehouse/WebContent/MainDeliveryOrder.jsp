@@ -20,11 +20,11 @@
 <link rel="stylesheet" type="text/css" href="css/tablecloth.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<title>物料单</title>
+<title>收货入库单</title>
 
 </head>
 
-<body class="browserscripting" onload="load('4')">
+<body class="browserscripting" onload="load('3')">
 	<div id="wrapper">
 		<div id="head">
 			<jsp:include page="head.jsp" />
@@ -35,8 +35,10 @@
 		</div>
 
 		<div id="maincontent" >
-			<jsp:include page="navtopOfMaterial.jsp" />
-			<jsp:include page="selectMaterial.jsp" />
+			<jsp:include page="navtopOfDelivery.jsp" />
+			<jsp:include page="selectDeliveryOrder.jsp" />
+			<jsp:include page="addDeliveryOrder.jsp" />
+			<jsp:include page="selectDeliveryOrderCollect.jsp" />
 		</div>
 		
 		<div id="footer">
@@ -46,7 +48,9 @@
 	<script type="text/javascript">
 		$(document).ready(function() 
 		{
-			btn_search_material();
+			btn_search_delivery();
+ 			btn_submit_delivery();
+			btn_collect();
 		});
 	</script>
 </body>

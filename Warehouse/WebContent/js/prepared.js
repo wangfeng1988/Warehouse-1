@@ -26,6 +26,10 @@ function load(tag)
 		document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
 		break;
 	case '3':
+		document.getElementById("form").getElementsByTagName("li")[2].setAttribute("id","selected");
+		document.getElementById("prepared_date").value=year+"-"+month+"-"+day;
+		break;
+	case '4':
 		document.getElementById("warehouse").getElementsByTagName("li")[0].setAttribute("id","selected");
 		break;
 	default:

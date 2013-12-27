@@ -12,15 +12,18 @@
 	<bean name="warehousingEntryCollectAction" class="com.ssh.jutem.edit.action.WarehousingEntryCollectAction" scope="prototype" />
 	<bean name="materialsRequisitionAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionAction" scope="prototype" />
 	<bean name="materialsRequisitionCollectAction" class="com.ssh.jutem.edit.action.MaterialsRequisitionCollectAction" scope="prototype" />
+	<bean name="deliveryOrderAction" class="com.ssh.jutem.edit.action.DeliveryOrderAction" scope="prototype" />
+	<bean name="deliveryOrderCollectAction" class="com.ssh.jutem.edit.action.DeliveryOrderCollectAction" scope="prototype" />
 	<bean name="materialAction" class="com.ssh.jutem.edit.action.MaterialAction" scope="prototype" />
 	<bean name="userAction" class="com.ssh.jutem.edit.action.UserAction" scope="prototype" />
 	
 	<!-- 管理service -->
 	<bean id="entryService" class="com.ssh.jutem.edit.service.WarehousingEntryServiceImp" />
 	<bean id="entryCollectService" class="com.ssh.jutem.edit.service.WarehousingEntryCollectServiceImp" />
-	<bean id="orderService" class="com.ssh.jutem.edit.service.DeliveryOrderServiceImp" />
 	<bean id="requisitionService" class="com.ssh.jutem.edit.service.MaterialsRequisitionServiceImp" />
 	<bean id="requisitionCollectService" class="com.ssh.jutem.edit.service.MaterialsRequisitionCollectServiceImp" />
+	<bean id="deliveryService" class="com.ssh.jutem.edit.service.DeliveryOrderServiceImp" />
+	<bean id="deliveryCollectService" class="com.ssh.jutem.edit.service.DeliveryOrderCollectServiceImp" />
 	<bean id="materialService" class="com.ssh.jutem.edit.service.MaterialServiceImp" />
 	<bean id="userService" class="com.ssh.jutem.edit.service.UserServiceImp" />
 
@@ -38,6 +41,14 @@
 	</bean>
 	
 	<bean id="requisitionCollectDao" class="com.ssh.jutem.edit.dao.MaterialsRequisitionCollectDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="deliveryDao" class="com.ssh.jutem.edit.dao.DeliveryOrderDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="deliveryCollectDao" class="com.ssh.jutem.edit.dao.DeliveryOrderCollectDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

@@ -1,6 +1,15 @@
 package com.ssh.jutem.edit.model;
 
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class DeliveryOrder 
 {
 	private int id;
@@ -11,7 +20,10 @@ public class DeliveryOrder
 	private double total_number;
 	private double total_money;
 	private String remark;
+	private Set<Delivery_Material> delivery_material=new HashSet<Delivery_Material>();
 	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -59,6 +71,13 @@ public class DeliveryOrder
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	@OneToMany(mappedBy="delivery",cascade={CascadeType.ALL})
+	public Set<Delivery_Material> getDelivery_material() {
+		return delivery_material;
+	}
+	public void setDelivery_material(Set<Delivery_Material> delivery_material) {
+		this.delivery_material = delivery_material;
 	}
 	
 	@Override

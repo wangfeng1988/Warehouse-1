@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="deliveryCollectActions" extends="struts-default,json-default">
+
+		<action name="select_DeliveryOrderCollect" class="deliveryOrderCollectAction"
+			method="select">
+			<result type="json">
+	                <param name="root">result</param>
+	        </result>
+		</action>
+		
+		<action name="selectDetails_DeliveryOrderCollect" class="deliveryOrderCollectAction"
+			method="selectDetails">
+			<result name="detail">/detailsDeliveryOrderCollectDetail.jsp</result>
+			<result name="detail_excel">/makeExcelDeliveryCollectDetail.jsp</result>
+			<result name="excel">/makeExcelDeliveryCollect.jsp</result>
+			<result name="success">/detailsDeliveryOrderCollect.jsp</result>
+
+		</action>
+				
+	</package>
+</struts>

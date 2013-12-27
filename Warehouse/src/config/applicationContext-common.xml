@@ -45,6 +45,10 @@
 				<value>com.ssh.jutem.edit.model.MaterialsRequisitionCollect</value>
 				<value>com.ssh.jutem.edit.model.MaterialsRequisitionCollectDetail</value>
 				<value>com.ssh.jutem.edit.model.Requisition_Material</value>
+				<value>com.ssh.jutem.edit.model.DeliveryOrder</value>
+				<value>com.ssh.jutem.edit.model.DeliveryOrderCollect</value>
+				<value>com.ssh.jutem.edit.model.DeliveryOrderCollectDetail</value>
+				<value>com.ssh.jutem.edit.model.Delivery_Material</value>
 				<value>com.ssh.jutem.edit.model.User</value>	
 			</list>
 		</property>

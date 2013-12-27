@@ -10,7 +10,7 @@
 			<ul id="form">
 				<li><a href="MainWarehousingEntry.jsp">收货入库单</a></li>
 				<li><a href="MainMaterialsRequisition.jsp">领料出库单</a></li>
-				<li><a href="#">销售出库单</a></li>
+				<li><a href="MainDeliveryOrder.jsp">销售出库单</a></li>
 			</ul>
 		</div>
 		
