@@ -59,6 +59,14 @@
 			var $btn = $("input.search_delivery");
 			$btn.bind("click", function() {
 					
+				var searchKey=$("input[name=DeliverysearchKey]").val();
+				
+				if(searchKey=="")
+				{
+					alert("请填写关键字");
+					return false;
+				}
+				
 				$.ajax({
 					type : "post",
 					url : "select_DeliveryOrder",
@@ -70,6 +78,12 @@
 					dataType : "json",
 					success : function(data) {
 						var d = eval("(" + data + ")");
+						
+						if(d["result"]=="")
+						{
+							alert("查询没有结果");
+							return false;
+						}
 						
 						$("#delivery_table").empty();
 						

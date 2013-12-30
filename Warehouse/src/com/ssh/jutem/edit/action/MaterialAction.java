@@ -36,7 +36,7 @@ public class MaterialAction extends ActionSupport implements ServletRequestAware
 			map.put("result", materials);
 			
 			JsonConfig jsonConfig = new JsonConfig();
-	        String[] excludes = {"entry","requisition_material"}; 		
+	        String[] excludes = {"entry","requisition_material","delivery_material"}; 		
 	        jsonConfig.setExcludes(excludes);
 			
 			JSONObject json=JSONObject.fromObject(map,jsonConfig);

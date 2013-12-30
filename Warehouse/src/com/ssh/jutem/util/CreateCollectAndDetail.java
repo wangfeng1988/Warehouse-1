@@ -38,6 +38,8 @@ public class CreateCollectAndDetail extends TimerTask
 				System.out.println("create entry collect and detail success");
 			if(CreateRequisitionReference.CreateCollectAndDetail(year_month))
 				System.out.println("create requisition collect and detail success");
+			if(CreateDeliveryReference.CreateCollectAndDetail(year_month))
+				System.out.println("create delivery collect and detail success");
 		}
 			
 		System.out.println(new Date(System.currentTimeMillis()));

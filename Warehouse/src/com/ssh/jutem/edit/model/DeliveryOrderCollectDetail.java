@@ -15,7 +15,7 @@ public class DeliveryOrderCollectDetail
 {
 	private int id;
 	private String maked_year_month;
-	private String requisition_unit;
+	private String customer_name;
 	private double total_money;
 	private String remark;
 	private Set<DeliveryOrder> deliverys=new HashSet<DeliveryOrder>();
@@ -34,11 +34,11 @@ public class DeliveryOrderCollectDetail
 	public void setMaked_year_month(String maked_year_month) {
 		this.maked_year_month = maked_year_month;
 	}
-	public String getRequisition_unit() {
-		return requisition_unit;
+	public String getCustomer_name() {
+		return customer_name;
 	}
-	public void setRequisition_unit(String requisition_unit) {
-		this.requisition_unit = requisition_unit;
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
 	}
 	public double getTotal_money() {
 		return total_money;
@@ -64,9 +64,8 @@ public class DeliveryOrderCollectDetail
 	
 	@Override
 	public String toString() {
-		return "MaterialsRequisitionCollectDetail [id=" + id
-				+ ", maked_year_month=" + maked_year_month
-				+ ", requisition_unit=" + requisition_unit + ", total_money="
-				+ total_money + ", remark=" + remark + "]";
+		return "DeliveryOrderCollectDetail [id=" + id + ", maked_year_month="
+				+ maked_year_month + ", customer_name=" + customer_name
+				+ ", total_money=" + total_money + ", remark=" + remark + "]";
 	}
 }

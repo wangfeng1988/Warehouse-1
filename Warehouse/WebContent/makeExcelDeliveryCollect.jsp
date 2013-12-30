@@ -1,6 +1,6 @@
 <%@ page contentType="application/vnd.ms-excel; charset=utf-8"%>
 <%
-response.setHeader("Content-disposition","attachment; filename=requisitionCollect.xls");
+response.setHeader("Content-disposition","attachment; filename=deliveryCollect.xls");
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,8 +24,8 @@ response.setHeader("Content-disposition","attachment; filename=requisitionCollec
 
 		<tr>
 			<th>序号</th>
-			<th>领料单位</th>
-			<th>合计金额</th>
+			<th>顾客姓名</th>
+			<th>销售金额</th>
 			<th>备注</th>
 		</tr>
 
@@ -33,7 +33,7 @@ response.setHeader("Content-disposition","attachment; filename=requisitionCollec
 			status="index">
 			<tr>
 				<td><s:property value="#index.index" /></td>
-				<td><s:property value="#detail.requisition_unit" /></td>
+				<td><s:property value="#detail.customer_name" /></td>
 				<td><s:property value="#detail.total_money" /></td>
 				<td><s:property value="#detail.remark" /></td>
 			</tr>

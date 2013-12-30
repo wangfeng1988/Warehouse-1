@@ -52,7 +52,7 @@
 					<li><input type="button" name="Submit" value="删除"
 						onclick="javascript:DelRow();" /></li>
 					<li><input type="button" name="Submit" value="查询"
-						onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450');" /></li>
+						onclick="openFormWin('selectMatForForm.jsp','selectMatForForm','930','450');" /></li>
 				</ul>
 				<ul class="ul_nav content_foot_ul">
 					<li>合计金额:<input type="text" name="requisitionBean.total_money" /></li>

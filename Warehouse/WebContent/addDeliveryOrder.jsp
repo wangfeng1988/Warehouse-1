@@ -11,16 +11,15 @@
 
 	<div id="add" class="tabhidden">
 	
-		<h1>添加领料出库单</h1>
+		<h1>添加销售出库单</h1>
 
-		<form id="my_requisition" action="add_MaterialsRequisition" method="post">
+		<form id="my_delivery" action="add_DeliveryOrder" method="post">
 			<div id="form_information">
 				<ul class="ul_nav">
-					<li>制单日期：<input type="text" id="prepared_date" name="requisitionBean.prepared_by_date" readonly="readonly" /></li>
-					<li>单据号码：<input type="text" name="requisitionBean.document_number" /></li>
-					<li>原始单号：<input type="text" name="requisitionBean.original_invoice_number" /></li>
-					<li>发货仓库：<input type="text" name="requisitionBean.shipping_warehouse" /></li>
-					<li>领料单位：<input type="text" name="requisitionBean.requisition_unit" /></li>
+					<li>制单日期：<input type="text" id="prepared_date" name="deliveryBean.prepared_by_date" readonly="readonly" /></li>
+					<li>单据号码：<input type="text" name="deliveryBean.document_number" /></li>
+					<li>发货仓库：<input type="text" name="deliveryBean.shipping_warehouse" /></li>
+					<li>客户名称：<input type="text" name="deliveryBean.customer_name" /></li>
 				</ul>
 			</div>
 			<div id="content_table">
@@ -52,13 +51,13 @@
 					<li><input type="button" name="Submit" value="删除"
 						onclick="javascript:DelRow();" /></li>
 					<li><input type="button" name="Submit" value="查询"
-						onclick="openFormWin('selectMatForReq.jsp','selectMatForReq','930','450');" /></li>
+						onclick="openFormWin('selectMatForForm.jsp','selectMatForForm','930','450');" /></li>
 				</ul>
 				<ul class="ul_nav content_foot_ul">
-					<li>合计金额:<input type="text" name="requisitionBean.total_money" /></li>
-					<li>数量小计:<input type="text" name="requisitionBean.total_number" /></li>
+					<li>合计金额:<input type="text" name="deliveryBean.total_money" /></li>
+					<li>数量小计:<input type="text" name="deliveryBean.total_number" /></li>
 				</ul>
-				<input type="button" value="提交" class="submit_requisition"/>
+				<input type="button" value="提交" class="submit_delivery"/>
 			</div>
 
 		</form>
@@ -66,21 +65,21 @@
 	
 	 <script type="text/javascript">
 		/* 提交结果，执行ajax */
-		function btn_submit_requisition() {
+		function btn_submit_delivery() {
 
-			var $btn = $("input.submit_requisition");
+			var $btn = $("input.submit_delivery");
 			$btn.bind("click", function() {
 				var goal_table =document.getElementById("goal");
 				
 				/*设置需求数量，金额，物料id*/
 				for(var i=0;i<goal_table.rows.length;i++)
 				{
-					goal_table.rows[i].cells[7].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].number");
-					goal_table.rows[i].cells[8].getElementsByTagName('input')[0].setAttribute("name","requisitionMaterialBeans["+i+"].money");
+					goal_table.rows[i].cells[7].getElementsByTagName('input')[0].setAttribute("name","deliveryMaterialBeans["+i+"].number");
+					goal_table.rows[i].cells[8].getElementsByTagName('input')[0].setAttribute("name","deliveryMaterialBeans["+i+"].money");
 					goal_table.rows[i].cells[10].getElementsByTagName('input')[0].setAttribute("name","materialBeans["+i+"].id");
 				}
 				
- 				$('#my_requisition').ajaxSubmit(function (data) {
+ 				$('#my_delivery').ajaxSubmit(function (data) {
  					var d = eval("(" + data + ")");
  					alert(d["result"]);
  				});

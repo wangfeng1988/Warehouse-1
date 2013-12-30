@@ -52,6 +52,15 @@
 
 			var $btn = $("input.search_collect");
 			$btn.bind("click", function() {
+				
+				var searchKey=$("input[name=CollectsearchKey]").val();
+				
+				if(searchKey=="")
+				{
+					alert("请填写关键字");
+					return false;
+				}
+				
 				$.ajax({
 					type : "post",
 					url : "select_DeliveryOrderCollect",
@@ -64,6 +73,12 @@
 					success : function(data) {
 						var d = eval("(" + data + ")");
 						
+						if(d["result"]=="")
+						{
+							alert("查询没有结果");
+							return false;
+						}
+						
 						$("#collect_table").empty();
 						
 						$.each(d,function(i,result)
@@ -71,8 +86,8 @@
 							$.each(result,function(j,item)
 							{
 								var row="<tr><td>"+item['maked_year_month']+"</td>"+"<td>"+item['total_money']+"</td>"+
-								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetRequisitionCollect.jsp?id="+item["id"]+"','detailsMaterialsRequisitionCollect','930','500') /></td>"+
-								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetRequisitionCollectDetail.jsp?id="+item["id"]+"','detailsMaterialsRequisitionCollectDetail','930','500') /></td>"+
+								"<td><input type='button' value='详情' onclick=openFormWin('transferToDetDeliveryCollect.jsp?id="+item["id"]+"','detailsDeliveryOrderCollect','930','500') /></td>"+
+								"<td><input type='button' value='明细' onclick=openFormWin('transferToDetDeliveryCollectDetail.jsp?id="+item["id"]+"','detailsDeliveryOrderCollectDetail','930','500') /></td>"+
 								"</tr>";
 								
 								$("#collect_table").append(row);

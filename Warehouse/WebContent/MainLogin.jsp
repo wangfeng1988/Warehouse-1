@@ -11,6 +11,7 @@
 
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/CookieHelp.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css" />
@@ -18,7 +19,7 @@
 <title>登录</title>
 </head>
 
-<body>
+<body onload="checkCookie()">
 	<div id="head">
 		<jsp:include page="headForLogin.jsp" />
 	</div>
@@ -52,7 +53,10 @@
  					var d = eval("(" + data + ")");
  					
  					if(d["result"])
+ 					{
  						window.location.href="MainWarehousingEntry.jsp";
+ 						setCookie($("input[name=username]").val(),$("input[name=password]").val(),60);
+ 					}
  					else
  						alert("信息输入有误");
  				});
@@ -61,7 +65,7 @@
 			});
 		}
 	</script>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() 
 		{

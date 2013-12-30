@@ -37,8 +37,8 @@
 				<table>
 				<s:iterator value="deliveryCollect_details.deliverysdetail" id="detail" status="customer_index">
 						<tr>
-							<th>客户名</th><th><s:property value="#detail.customer_name" /></th>
-							<th>合计金额</th><th><s:property value="#detail.total_money" /></th>
+							<th>客户名称</th><th><s:property value="#detail.customer_name" /></th>
+							<th>销售金额</th><th><s:property value="#detail.total_money" /></th>
 						</tr>
 
 						<tr>

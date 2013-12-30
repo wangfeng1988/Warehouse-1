@@ -57,10 +57,17 @@
 	<script type="text/javascript">
 		/* 提交结果，执行ajax */
 		function btn_search_entry() {
-
 			var $btn = $("input.search_entry");
 			$btn.bind("click", function() {
-					
+				
+				var searchKey=$("input[name=EntrysearchKey]").val();
+				
+				if(searchKey=="")
+				{
+					alert("请填写关键字");
+					return false;
+				}
+				
 				$.ajax({
 					type : "post",
 					url : "select_WarehousingEntry",
@@ -72,6 +79,12 @@
 					dataType : "json",
 					success : function(data) {
 						var d = eval("(" + data + ")");
+						
+						if(d["result"]=="")
+						{
+							alert("查询没有结果");
+							return false;
+						}
 						
 						$("#entry_table").empty();
 						

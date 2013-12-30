@@ -52,6 +52,14 @@
 
 			var $btn = $("input.search_collect");
 			$btn.bind("click", function() {
+				
+				var searchKey=$("input[name=CollectsearchKey]").val();
+				
+				if(searchKey=="")
+				{
+					alert("请填写关键字");
+					return false;
+				}
 						
 				$.ajax({
 					type : "post",
@@ -64,6 +72,12 @@
 					dataType : "json",
 					success : function(data) {
 						var d = eval("(" + data + ")");
+						
+						if(d["result"]=="")
+						{
+							alert("查询没有结果");
+							return false;
+						}
 						
 						$("#collect_table").empty();
 						

@@ -23,7 +23,7 @@ public class DeliveryOrderServiceImp implements IDeliveryOrderService
 			List<Material> materialBeans,
 			List<Delivery_Material> delivery_material) 
 	{
-		System.out.println("This is material requisition add service");
+		System.out.println("This is material delivery add service");
 		
 		/*设置实体之间的导航*/
 		deliveryBean.setDelivery_material(new HashSet<Delivery_Material>(delivery_material));

@@ -35,4 +35,7 @@ function load(tag)
 	default:
 		break;
 	}
+	
+	/*设置上方用户名*/
+	document.getElementById("welcome").getElementsByTagName("li")[2].innerHTML="欢迎"+getCookie("username");
 }
