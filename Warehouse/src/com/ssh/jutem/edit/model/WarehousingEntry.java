@@ -31,6 +31,12 @@ public class WarehousingEntry
 	public void setId(int id) {
 		this.id = id;
 	}
+	public String getPrepared_by_date() {
+		return prepared_by_date;
+	}
+	public void setPrepared_by_date(String prepared_by_date) {
+		this.prepared_by_date = prepared_by_date;
+	}
 	public Integer getDocument_number() {
 		return document_number;
 	}
@@ -42,12 +48,6 @@ public class WarehousingEntry
 	}
 	public void setOriginal_invoice_number(Integer original_invoice_number) {
 		this.original_invoice_number = original_invoice_number;
-	}
-	public String getPrepared_by_date() {
-		return prepared_by_date;
-	}
-	public void setPrepared_by_date(String prepared_by_date) {
-		this.prepared_by_date = prepared_by_date;
 	}
 	public String getShipping_warehouse() {
 		return shipping_warehouse;
@@ -87,7 +87,6 @@ public class WarehousingEntry
 	public void setMaterials(Set<Material> materials) {
 		this.materials = materials;
 	}
-	
 	@Override
 	public String toString() {
 		return "WarehousingEntry [id=" + id + ", prepared_by_date="

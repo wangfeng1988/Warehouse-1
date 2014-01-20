@@ -77,19 +77,84 @@
  	<script type="text/javascript">
 		/* 提交结果，执行ajax */
 		function btn_submit_entry() {
-
+			
 			var $btn = $("input.submit_entry");
 			$btn.bind("click", function() {
- 				 
- 				$('#my_entry').ajaxSubmit(function (data) {
+
+/* 				if(!validate_form($('#my_entry')))
+				{
+					alert("请输入完整信息");
+					return false;
+				}  */
+				
+  				$("#my_entry").ajaxSubmit(function (data) {
  					var d = eval("(" + data + ")");
  					alert(d["result"]);
- 				});
-
- 				return false;
+ 				}); 
+				
+				return false;
 			});
 		}
+		
+/* 
+		 function validate_form(thisform)
+		{
+			with (thisform)
+			{
+				
+				if(!validate_required("entryBean.document_number"))
+				{
+					alert("aaa");
+					return false;
+				}
+
+				if(!validate_required("entryBean.original_invoice_number"))
+				{
+					alert("bb");
+					return false;
+				}
+				if(!validate_required("entryBean.shipping_warehouse"))
+				{
+					alert("cc");
+					return false;
+				}		
+				if(!validate_required("entryBean.supplier"))
+				{
+					alert("dd");
+					return false;
+				}
+				if(!validate_required("entryBean.total_money"))
+				{
+					alert("ee");
+					return false;
+				}
+				if(!validate_required("entryBean.total_number"))
+				{
+					alert("ff");
+					return false;
+				}
+
+			}
+		}
+		
+		function validate_required(field)
+		{
+			alert("hello");
+			with(field)
+			{
+				alert("in");
+				if(field.value==null || field.value=="")
+				{
+					alert("out");
+					return false;
+				}
+				else
+					return true;
+			}
+		} */
 	</script>
 	
 </body>
 </html>
+
+

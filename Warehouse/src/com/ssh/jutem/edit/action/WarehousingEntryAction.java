@@ -19,18 +19,7 @@ import com.ssh.jutem.edit.service.IWarehousingEntryService;
 
 public class WarehousingEntryAction extends ActionSupport implements ServletRequestAware
 {
-	public void validateAdd()
-	{
-		for(Material m:materialBeans)
-		{
-			if(m==null)
-				continue;
-			if(m.getCoding()==null || m.getName()==null || m.getSpecification()==null || m.getUnit()==null || m.getWarehousing_price()==0
-					|| m.getSales_price()==0 || m.getAmount()==0 || m.getMoney()==0)
-				addFieldError("material_error","请正确填写必要信息");
-		}
-	}
-	
+
 	public String add() throws Exception
 	{
 		try
@@ -40,6 +29,9 @@ public class WarehousingEntryAction extends ActionSupport implements ServletRequ
 			for(Material m:materialBeans)
 				System.out.println(m.toString());
 			
+			if(!entryService.add(entryBean,materialBeans))
+				System.out.println("spring success");
+			
 			Map<String,String> map=new HashMap<String,String>();
 			map.put("result", "添加成功");
 			
@@ -48,9 +40,6 @@ public class WarehousingEntryAction extends ActionSupport implements ServletRequ
 			result=json.toString();
 			
 			System.out.println(result);
-			
-			if(!entryService.add(entryBean,materialBeans))
-				System.out.println("spring success");
 		}
 		catch(Exception e)
 		{
